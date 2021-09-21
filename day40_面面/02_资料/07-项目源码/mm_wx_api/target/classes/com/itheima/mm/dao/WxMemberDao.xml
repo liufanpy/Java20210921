@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mm.dao.WxMemberDao">
+    <resultMap id="selectByOpenIdMap" type="WxMember">
+        <id property="id" column="id"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="avatar_url" property="avatarUrl"/>
+        <result column="open_id" property="openId"/>
+        <result column="union_id" property="unionId"/>
+        <result column="city_id" property="cityId"/>
+        <result column="course_id" property="courseId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="last_category_kind" property="lastCategoryKind"/>
+        <result column="last_category_type" property="lastCategoryType"/>
+        <result column="last_question_id" property="lastQuestionId"/>
+    </resultMap>
+    <!--根据opendId查询-->
+    <select id="selectByOpenId" resultMap="selectByOpenIdMap" parameterType="String">
+        SELECT *
+        FROM t_wx_member
+        WHERE open_id = #{openId}
+    </select>
+
+    <!--注册 新增-->
+    <insert id="add" parameterType="WxMember">
+        <selectKey keyProperty="id" order="AFTER" resultType="integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT  INTO t_wx_member (nick_name, avatar_url, gender, city, province, country,language,open_id, union_id, create_time)
+        VALUES (#{nickName},#{avatarUrl},#{gender},#{city},#{province},#{country},#{language},#{openId},#{unionId},#{createTime})
+    </insert>
+
+    <!--更新学科和城市-->
+    <update id="setCityCourse" parameterType="Map">
+        UPDATE t_wx_member SET course_id = #{subjectID}, city_id = #{cityID} WHERE open_id = #{openId}
+    </update>
+</mapper>

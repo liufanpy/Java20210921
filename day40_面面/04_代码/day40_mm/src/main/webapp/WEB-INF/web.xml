@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<!--1. 配置过滤器-->
+	<filter>
+		<filter-name>char</filter-name>
+		<filter-class>com.itheima.mm.filter.CharchaterFilter</filter-class>
+	</filter>
+
+	<!--过滤器要过滤所有的请求-->
+	<filter-mapping>
+		<filter-name>char</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!--
+		2. 由于我们这个项目使用了前一天的自定义的MVC框架，
+			这使得我们要写一个具体的业务处理类的时候，只要写一个普通类即可，这都是因为
+		存在一个总管类（前端控制器类）  DispatcherServlet ， 这个DispatcherServlet它要
+		抓住所有尾巴带有 .do的请求，然后把请求交给具体的业务类-->
+	
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>com.itheima.servlet.DispatcherServlet</servlet-class>
+
+		<!--1. 告诉这个DispatcherServlet要扫描哪个包-->
+		<init-param>
+			<param-name>packageName</param-name>
+			<param-value>com.itheima.mm.controller</param-value>
+		</init-param>
+
+		<!--2. 让这个DispatcherServlet启动的时机提前到项目发布-->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

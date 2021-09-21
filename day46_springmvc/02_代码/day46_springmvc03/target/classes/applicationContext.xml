@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!--1. 定义连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+         <property name="driverClass" value="${driverClass}"/>
+         <property name="jdbcUrl" value="${jdbcUrl}"/>
+         <property name="user" value="${user}"/>
+         <property name="password" value="${password}"/>
+    </bean>
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+         <property name="jdbcUrl" value="jdbc:mysql:///ssm"/>
+         <property name="user" value="root"/>
+         <property name="password" value="root"/>
+    </bean>-->
+
+    <!--
+        2. 由spring创建SqlSessionFactory工厂
+            2.1 SqlSessionFactory 是一个工厂，专门用于生成SqlSession
+            2.2 SqlSession是用来操作数据库，那么就必须要知道连接的是什么数据库
+            2.3 所以要给这个SqlSessionFactoryBean 注入DataSource
+    -->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <!--给指定的包下的所有类，起别名-->
+        <property name="typeAliasesPackage" value="com.itheima.bean"/>
+    </bean>
+
+    <!--3. 告诉spring扫描dao的包-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.itheima.dao"/>
+    </bean>
+
+
+    <!--
+        4. 配置事务 就是使用spring的那一套就可以了！
+            4.1 配置事务一定要有一个管理员，不管是xml的方式还是注解的方式
+            4.2 事务得管理员根据dao的技术不同而不同
+                jdbc|mysql  ===== DataSourceTransactionManager
+                hibernate  ===== HibernateTransactionManager
+     -->
+
+    <bean id="tm" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--配置事务： 注解方式-->
+    <!--<tx:annotation-driven transaction-manager="tm"/>-->
+
+    <!--配置事务： xml方式-->
+    <tx:advice id="myAdvice" transaction-manager="tm">
+        <tx:attributes>
+            <tx:method name="*" />
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:advisor advice-ref="myAdvice" pointcut="execution(* com.itheima..*.*(..))"/>
+    </aop:config>
+</beans>

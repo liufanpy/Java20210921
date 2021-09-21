@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.AccountDao">
+
+
+    <!--如果参数类型或者结果类型在写完的时候，直接报红，那原因只有一个！ 没有声明别名-->
+    <select id="findAll" resultType="account">
+        select * from account
+    </select>
+
+</mapper>

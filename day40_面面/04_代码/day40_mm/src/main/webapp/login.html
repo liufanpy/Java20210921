@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <title>黑马面面</title>
+    <meta name="description" content="黑马面面">
+    <meta name="keywords" content="黑马面面">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="css/element-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+    
+    </style>
+</head>
+
+<body class="loginBg">
+    <div id="app" class="mainBg">
+        <div class="loginMain">
+          <div class="logoInfo clear">
+            <em class="logo"></em>
+            <span class="logoFontZ">黑马面面</span>
+            <span>用户登录</span>
+          </div>
+            <span v-html="form.info"></span>
+          <div class="loginCon">
+            <el-form ref="form" :model="form" :rules="rules">
+              <el-form-item>
+                <el-input v-model="form.userName" placeholder="用户名">
+                </el-input>
+              </el-form-item>
+              <el-form-item >
+                <el-input v-model="form.pwd" type="password" placeholder="密码">
+                </el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="onSubmit">登录</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </div>
+    </div>
+</body>
+<!-- 引入组件库 -->
+<script src="js/vue.js"></script>
+<script src="js/element-ui.js"></script>
+<script src="plugins/jquery/dist/jquery.js"></script>
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/base.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                form:{
+                  mobile:'',
+                  code:'',
+                  checked:'',
+                    info:''
+                },
+                rules: {
+                    userName: [
+                        { required: true, message: '请填写', trigger: 'blur' }
+                    ],
+                    pwd: [
+                        { required: true, message: '请填写', trigger: 'blur' }
+                    ]
+                },
+                mobileShow:false,
+                codeShow:false
+            }
+        },
+        created() {},
+        methods: {
+          onSubmit(){
+
+              //得到form表单数据，对表单数据进行校验，如果校验通过，就执行if语句块里面的东西。
+              this.$refs['form'].validate((valid) => {
+                  if (valid) { //如果能进入，即表示校验通过
+
+                      //1. 创建一个json对象。
+                      var formData = {
+                          username: this.form.userName,
+                          password: this.form.pwd
+                      };
+
+                      //2. 发起请求
+                      axios.post("login.do" , formData).then(response=>{
+
+                         //response:  {data: {…}, status: 200, statusText: "", headers: {…}, config: {…}, …}
+                          // data: {flag: true, message: "登录成功"}
+                          console.log("------1------");
+                          console.log(response);
+                          console.log("------2------");
+
+
+                          if(response.data.flag){
+
+                              /*
+                                1. 先存储用户名到内存中，以便到首页的时候，可以把用户名拿出来显示
+                                    sessionStorage是会话级别的存储，这个会话跟以前学过的session不太一样，
+                                        它其实指的就就是只要不关闭浏览器，都可以使用这个sessionStorage里面存的东西。（必须是同一个域才行）
+                                        关闭浏览器就没有了。
+                                    localStorage 存到文件里面去，关闭浏览器，下次打开浏览器的时候，也还有。
+                              */
+                              sessionStorage.setItem("userName" ,this.form.userName )
+                              //localStorage.setItem("address","北京")
+
+                              //2. 如果请求成功，就跳转到首页去！
+                              window.location.href = "pages/index.html";
+                          }else{
+                              //登录失败
+                              this.$message.error(response.data.message);
+                          }
+
+                      });
+
+
+
+                  }
+              });
+
+              /*this.$refs['form'].validate((valid) => {
+                  if (valid) {
+                    this.$refs['form'].validate((valid) => {
+                      if (valid) {
+                        var formData = {
+                          username: this.form.userName,
+                          password: this.form.pwd
+                        };
+                        window.location.href = "pages/index.html";
+                      }
+                    });
+                  }
+              });*/
+          }
+        }
+    })
+    $("#app").height($(window).height())
+</script>
+</html>

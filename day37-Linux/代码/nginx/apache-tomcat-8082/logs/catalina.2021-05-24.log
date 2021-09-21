@@ -1,0 +1,43 @@
+24-May-2021 14:41:30.890 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本: Apache Tomcat/8.5.65
+24-May-2021 14:41:30.896 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:        Mar 30 2021 12:28:40 UTC
+24-May-2021 14:41:30.897 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号:      8.5.65.0
+24-May-2021 14:41:30.897 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 操作系统名称:      Windows 10
+24-May-2021 14:41:30.897 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:           10.0
+24-May-2021 14:41:30.897 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:              amd64
+24-May-2021 14:41:30.897 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:     C:\Program Files\Java\jdk1.8.0_161\jre
+24-May-2021 14:41:30.898 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java虚拟机版本:    1.8.0_161-b12
+24-May-2021 14:41:30.898 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:        Oracle Corporation
+24-May-2021 14:41:30.898 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     D:\nginx\apache-tomcat-8082
+24-May-2021 14:41:30.898 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     D:\nginx\apache-tomcat-8082
+24-May-2021 14:41:30.899 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.config.file=D:\nginx\apache-tomcat-8082\conf\logging.properties
+24-May-2021 14:41:30.899 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-May-2021 14:41:30.899 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djdk.tls.ephemeralDHKeySize=2048
+24-May-2021 14:41:30.899 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+24-May-2021 14:41:30.904 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dignore.endorsed.dirs=
+24-May-2021 14:41:30.904 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.base=D:\nginx\apache-tomcat-8082
+24-May-2021 14:41:30.905 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.home=D:\nginx\apache-tomcat-8082
+24-May-2021 14:41:30.905 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.io.tmpdir=D:\nginx\apache-tomcat-8082\temp
+24-May-2021 14:41:30.906 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 使用APR版本[1.7.0]加载了基于APR的Apache Tomcat本机库[1.2.27]。
+24-May-2021 14:41:30.907 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR功能：IPv6[true]、sendfile[true]、accept filters[false]、random[true]。
+24-May-2021 14:41:30.916 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL配置：useAprConnector[false]，useOpenSSL[true]
+24-May-2021 14:41:30.922 信息 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL成功初始化 [OpenSSL 1.1.1k  25 Mar 2021]
+24-May-2021 14:41:31.037 信息 [main] org.apache.coyote.AbstractProtocol.init 初始化协议处理器 ["http-nio-8082"]
+24-May-2021 14:41:31.726 信息 [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+24-May-2021 14:41:31.735 信息 [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1243 ms
+24-May-2021 14:41:31.759 信息 [main] org.apache.catalina.core.StandardService.startInternal 正在启动服务[Catalina]
+24-May-2021 14:41:31.760 信息 [main] org.apache.catalina.core.StandardEngine.startInternal 正在启动 Servlet 引擎：[Apache Tomcat/8.5.65]
+24-May-2021 14:41:31.774 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8082\webapps\docs]
+24-May-2021 14:41:32.003 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8082\webapps\docs]的部署已在[226]毫秒内完成
+24-May-2021 14:41:32.007 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8082\webapps\examples]
+24-May-2021 14:41:32.288 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8082\webapps\examples]的部署已在[281]毫秒内完成
+24-May-2021 14:41:32.292 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8082\webapps\host-manager]
+24-May-2021 14:41:32.318 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8082\webapps\host-manager]的部署已在[25]毫秒内完成
+24-May-2021 14:41:32.322 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8082\webapps\manager]
+24-May-2021 14:41:32.347 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8082\webapps\manager]的部署已在[25]毫秒内完成
+24-May-2021 14:41:32.352 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8082\webapps\ROOT]
+24-May-2021 14:41:32.374 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8082\webapps\ROOT]的部署已在[22]毫秒内完成
+24-May-2021 14:41:32.383 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8082"]
+24-May-2021 14:41:32.393 信息 [main] org.apache.catalina.startup.Catalina.start Server startup in 657 ms
+24-May-2021 14:43:42.542 信息 [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8082\webapps\linkmanSys]
+24-May-2021 14:43:43.489 信息 [localhost-startStop-2] org.apache.jasper.servlet.TldScanner.scanJars 至少有一个JAR被扫描用于TLD但尚未包含TLD。 为此记录器启用调试日志记录，以获取已扫描但未在其中找到TLD的完整JAR列表。 在扫描期间跳过不需要的JAR可以缩短启动时间和JSP编译时间。
+24-May-2021 14:43:43.528 信息 [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8082\webapps\linkmanSys]的部署已在[986]毫秒内完成

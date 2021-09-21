@@ -1,0 +1,92 @@
+24-May-2021 12:05:43.716 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本: Apache Tomcat/8.5.65
+24-May-2021 12:05:43.723 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:        Mar 30 2021 12:28:40 UTC
+24-May-2021 12:05:43.723 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号:      8.5.65.0
+24-May-2021 12:05:43.724 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 操作系统名称:      Windows 10
+24-May-2021 12:05:43.724 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:           10.0
+24-May-2021 12:05:43.724 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:              amd64
+24-May-2021 12:05:43.724 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:     C:\Program Files\Java\jdk1.8.0_161\jre
+24-May-2021 12:05:43.725 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java虚拟机版本:    1.8.0_161-b12
+24-May-2021 12:05:43.725 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:        Oracle Corporation
+24-May-2021 12:05:43.725 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     D:\nginx\apache-tomcat-8.5.65
+24-May-2021 12:05:43.725 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     D:\nginx\apache-tomcat-8.5.65
+24-May-2021 12:05:43.725 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.config.file=D:\nginx\apache-tomcat-8.5.65\conf\logging.properties
+24-May-2021 12:05:43.726 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-May-2021 12:05:43.726 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djdk.tls.ephemeralDHKeySize=2048
+24-May-2021 12:05:43.726 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+24-May-2021 12:05:43.726 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dignore.endorsed.dirs=
+24-May-2021 12:05:43.727 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.base=D:\nginx\apache-tomcat-8.5.65
+24-May-2021 12:05:43.728 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.home=D:\nginx\apache-tomcat-8.5.65
+24-May-2021 12:05:43.728 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.io.tmpdir=D:\nginx\apache-tomcat-8.5.65\temp
+24-May-2021 12:05:43.728 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 使用APR版本[1.7.0]加载了基于APR的Apache Tomcat本机库[1.2.27]。
+24-May-2021 12:05:43.729 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR功能：IPv6[true]、sendfile[true]、accept filters[false]、random[true]。
+24-May-2021 12:05:43.730 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL配置：useAprConnector[false]，useOpenSSL[true]
+24-May-2021 12:05:43.735 信息 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL成功初始化 [OpenSSL 1.1.1k  25 Mar 2021]
+24-May-2021 12:05:43.838 信息 [main] org.apache.coyote.AbstractProtocol.init 初始化协议处理器 ["http-nio-8080"]
+24-May-2021 12:05:44.317 信息 [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+24-May-2021 12:05:44.327 信息 [main] org.apache.catalina.startup.Catalina.load Initialization processed in 898 ms
+24-May-2021 12:05:44.350 信息 [main] org.apache.catalina.core.StandardService.startInternal 正在启动服务[Catalina]
+24-May-2021 12:05:44.350 信息 [main] org.apache.catalina.core.StandardEngine.startInternal 正在启动 Servlet 引擎：[Apache Tomcat/8.5.65]
+24-May-2021 12:05:44.371 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR 正在部署web应用程序存档文件[D:\nginx\apache-tomcat-8.5.65\webapps\linkmanSys.war]
+24-May-2021 12:05:45.210 信息 [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars 至少有一个JAR被扫描用于TLD但尚未包含TLD。 为此记录器启用调试日志记录，以获取已扫描但未在其中找到TLD的完整JAR列表。 在扫描期间跳过不需要的JAR可以缩短启动时间和JSP编译时间。
+24-May-2021 12:05:45.278 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR web应用程序存档文件[D:\nginx\apache-tomcat-8.5.65\webapps\linkmanSys.war]的部署已在[907]ms内完成
+24-May-2021 12:05:45.281 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8.5.65\webapps\docs]
+24-May-2021 12:05:45.296 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8.5.65\webapps\docs]的部署已在[15]毫秒内完成
+24-May-2021 12:05:45.297 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8.5.65\webapps\examples]
+24-May-2021 12:05:45.450 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8.5.65\webapps\examples]的部署已在[153]毫秒内完成
+24-May-2021 12:05:45.454 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8.5.65\webapps\host-manager]
+24-May-2021 12:05:45.482 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8.5.65\webapps\host-manager]的部署已在[28]毫秒内完成
+24-May-2021 12:05:45.485 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8.5.65\webapps\manager]
+24-May-2021 12:05:45.504 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8.5.65\webapps\manager]的部署已在[19]毫秒内完成
+24-May-2021 12:05:45.508 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\nginx\apache-tomcat-8.5.65\webapps\ROOT]
+24-May-2021 12:05:45.520 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\nginx\apache-tomcat-8.5.65\webapps\ROOT]的部署已在[12]毫秒内完成
+24-May-2021 12:05:45.523 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8080"]
+24-May-2021 12:05:45.533 信息 [main] org.apache.catalina.startup.Catalina.start Server startup in 1204 ms
+24-May-2021 15:19:19.558 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本: Apache Tomcat/8.5.65
+24-May-2021 15:19:19.565 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:        Mar 30 2021 12:28:40 UTC
+24-May-2021 15:19:19.565 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号:      8.5.65.0
+24-May-2021 15:19:19.567 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 操作系统名称:      Windows 10
+24-May-2021 15:19:19.567 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:           10.0
+24-May-2021 15:19:19.568 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:              amd64
+24-May-2021 15:19:19.568 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:     C:\Program Files\Java\jdk1.8.0_161\jre
+24-May-2021 15:19:19.569 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java虚拟机版本:    1.8.0_161-b12
+24-May-2021 15:19:19.569 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:        Oracle Corporation
+24-May-2021 15:19:19.569 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080
+24-May-2021 15:19:19.570 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080
+24-May-2021 15:19:19.570 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.config.file=D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\conf\logging.properties
+24-May-2021 15:19:19.570 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-May-2021 15:19:19.571 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djdk.tls.ephemeralDHKeySize=2048
+24-May-2021 15:19:19.571 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+24-May-2021 15:19:19.571 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dignore.endorsed.dirs=
+24-May-2021 15:19:19.577 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.base=D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080
+24-May-2021 15:19:19.621 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.home=D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080
+24-May-2021 15:19:19.621 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.io.tmpdir=D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\temp
+24-May-2021 15:19:19.623 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 使用APR版本[1.7.0]加载了基于APR的Apache Tomcat本机库[1.2.27]。
+24-May-2021 15:19:19.624 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR功能：IPv6[true]、sendfile[true]、accept filters[false]、random[true]。
+24-May-2021 15:19:19.624 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL配置：useAprConnector[false]，useOpenSSL[true]
+24-May-2021 15:19:19.636 信息 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL成功初始化 [OpenSSL 1.1.1k  25 Mar 2021]
+24-May-2021 15:19:19.757 信息 [main] org.apache.coyote.AbstractProtocol.init 初始化协议处理器 ["http-nio-8080"]
+24-May-2021 15:19:20.421 信息 [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+24-May-2021 15:19:20.432 信息 [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1229 ms
+24-May-2021 15:19:20.456 信息 [main] org.apache.catalina.core.StandardService.startInternal 正在启动服务[Catalina]
+24-May-2021 15:19:20.456 信息 [main] org.apache.catalina.core.StandardEngine.startInternal 正在启动 Servlet 引擎：[Apache Tomcat/8.5.65]
+24-May-2021 15:19:20.486 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR 正在部署web应用程序存档文件[D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\day31.war]
+24-May-2021 15:19:21.109 信息 [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars 至少有一个JAR被扫描用于TLD但尚未包含TLD。 为此记录器启用调试日志记录，以获取已扫描但未在其中找到TLD的完整JAR列表。 在扫描期间跳过不需要的JAR可以缩短启动时间和JSP编译时间。
+24-May-2021 15:19:21.182 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR web应用程序存档文件[D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\day31.war]的部署已在[693]ms内完成
+24-May-2021 15:19:21.185 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR 正在部署web应用程序存档文件[D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\linkmanSys.war]
+24-May-2021 15:19:21.988 信息 [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars 至少有一个JAR被扫描用于TLD但尚未包含TLD。 为此记录器启用调试日志记录，以获取已扫描但未在其中找到TLD的完整JAR列表。 在扫描期间跳过不需要的JAR可以缩短启动时间和JSP编译时间。
+24-May-2021 15:19:22.018 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR web应用程序存档文件[D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\linkmanSys.war]的部署已在[833]ms内完成
+24-May-2021 15:19:22.020 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\docs]
+24-May-2021 15:19:22.040 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\docs]的部署已在[20]毫秒内完成
+24-May-2021 15:19:22.047 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\examples]
+24-May-2021 15:19:22.300 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\examples]的部署已在[253]毫秒内完成
+24-May-2021 15:19:22.305 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\host-manager]
+24-May-2021 15:19:22.330 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\host-manager]的部署已在[25]毫秒内完成
+24-May-2021 15:19:22.334 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\manager]
+24-May-2021 15:19:22.357 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\manager]的部署已在[22]毫秒内完成
+24-May-2021 15:19:22.362 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\ROOT]
+24-May-2021 15:19:22.383 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[D:\czbk\java113\day37_Linux\代码\nginx\apache-tomcat-8080\webapps\ROOT]的部署已在[21]毫秒内完成
+24-May-2021 15:19:22.389 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8080"]
+24-May-2021 15:19:22.403 信息 [main] org.apache.catalina.startup.Catalina.start Server startup in 1970 ms
+24-May-2021 15:20:37.027 信息 [http-nio-8080-exec-9] com.mchange.v2.log.MLog.<clinit> MLog clients using java 1.4+ standard logging.
+24-May-2021 15:20:37.124 信息 [http-nio-8080-exec-9] com.mchange.v2.c3p0.C3P0Registry.banner Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+24-May-2021 15:20:37.341 信息 [http-nio-8080-exec-9] com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getPoolManager Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 31sqgyah17mp2aoc2w19e|dc62e06, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 31sqgyah17mp2aoc2w19e|dc62e06, idleConnectionTestPeriod -> 0, initialPoolSize -> 5, jdbcUrl -> jdbc:mysql://localhost:3306/day31, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]

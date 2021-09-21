@@ -1,0 +1,50 @@
+一：Linux介绍
+	Linux：是一个操作系统  安全稳定，适合作为服务器操作系统
+二：Linux安装
+	VMware 16.0+：虚拟一台电脑
+	Linux安装：安装Linux操作系统
+	CRT安装：绿色版 解压即用
+	Linux目录结构：
+		/：根目录
+			etc：存放系统配置文件  (iptables、profile、my.cnf)
+			usr：程序安装目录	（/usr/local/java  /usr/local/tomcat /usr/local/mysql）
+			root：root用户主目录
+			home：用户主目录
+三：Linux操作命令
+	1.目录操作：cd、ls、mkdir、pwd
+	2.文件查看：cat、more、tail
+	3.文件目录通用命令：cp 、 mv 、rm
+	4.vi编辑器：
+		命令模式：yy：复制 p：粘贴 dd：删除 /：搜索
+		编辑模式：按i进入
+		底行模式：按：进入
+	5.压缩解压
+		打包：     	tar -cvf 包名  要打包的文件或目录
+		打包并压缩：tar -zcvf 包名  要打包的文件或目录
+		解压：		tar -xvf 要解压的包  -C  目标目录
+	6.通用命令：
+		查看进程：ps -ef
+		查看进程并查找指定的进程：ps -ef | grep tomcat
+		杀死进程：kill -9 进程号
+		动态监控系统资源占用：top
+		查看系统内存占用：free
+	7.网络管理
+		网络服务的打开关闭：service network start|stop|restart
+		网卡的打开和关闭：	ifconfig 网卡名称 up|down
+		查看网卡信息及IP地址： ifconfig
+		重新自动分配ip地址：dhclient
+	8.防火墙：
+		防火墙的打开关闭重启：service iptables start|stop|restart
+		防火墙开放端口号：
+			1.打开配置文件  vi /etc/sysconfig/iptables
+			2.编辑配置文件 (yy：复制--p：粘贴--修改端口号--保存退出)
+			3.重启防火墙    service iptables restart		
+四：Linux下软件的安装
+	JDK
+	Tomcat
+	MySQL
+	
+
+		
+		
+	

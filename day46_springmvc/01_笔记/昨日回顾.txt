@@ -1,0 +1,88 @@
+springmvc day02
+
+常用注解
+
+	@RequestParam : 要求一定要携带参数，有指定名字的。
+	@RequestBody ： 要求要有请求体，一般用来转化JSON , 把json字符串转化成一个JavaBean对象
+	@PathVariable ： 配合RestFul风格使用，为了截取url地址里面的数据  /delete/3  ==> /delete/{id}
+	@RequstHeader : 获取指定请求头，赋值给形参
+	@CookieValue ： 获取指定的Cookie，赋值给形参
+
+返回视图和数据
+	1. 返回视图
+		物理视图
+
+			a. 完整的写法
+				return "/success.jsp";
+
+			b. 带前缀的写法
+				return "forward:/success.jsp";
+				return "redirect:/success.jsp";
+		逻辑视图
+			b. 简写
+				return "success";
+
+	2. 返回视图和数据
+
+		a. 使用ModelAndView
+
+			public ModelAndView page01(ModelAndView mv){
+
+				//1. 设置数据
+				mv.addObject(key , value);
+
+				//2. 设置视图
+				mv.setViewName("success");
+
+				return mv;
+			}
+
+		b. 使用Model
+
+			public String page01(Model m){
+
+				//1. 设置数据
+				mv.addAttribute(key , value);
+
+				return "success";
+			}
+
+	3. 返回数据
+
+		a. 返回字符串
+			1. 使用response对象write出去
+
+			2. 直接使用返回值的形式，返回字符串，但是方法上面要打上注解 @ResponseBody
+
+				@RequestMapping("/page02")
+				@ResponseBody
+				public String page02(){
+
+					return "aaaaaaaaaaaa";
+				}
+
+		b. 返回json字符串
+
+			1. 自己把对象转化为json字符串，然后返回字符串
+
+			2. 直接返回对象即可	
+				@RequestMapping("/page02")
+				@ResponseBody
+				public User page02(){
+					return new User("张三", 18);
+				}
+
+RestFul
+
+	1. 这是一种api接口的设计风格，可以用，也可以不用
+	2. 它认为所有的url地址都代表一种资源，应该只能出现名词，不能出现动词。
+	3. 需要配合请求方式来判断到底想要执行的是什么操作。
+		GET --- 查询
+		POST --- 新增
+		PUT --- 更新
+		DELETE --- 删除
+
+文件上传
+
+	传统的文件上传
+	跨服务器的文件上传

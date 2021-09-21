@@ -1,0 +1,33 @@
+一、延迟加载
+	场景：多表联查，将连接查询拆分成两个单表查询
+	一对一：<association property="" javaType="" column="条件列" select="关联的下一条SQL语句" fetchType="lazy" ></association>
+	一对多：<collection property="多方属性名称" ofType="多方属性类型" column="条件列" select="关联的下一条SQL语句" fetchType="lazy">/collection>
+
+二、MyBatis注解开发
+	2.1：增删改查
+		@Insert()
+		@SelectKey(keyProperty="",resultType="",before=true|false,statement="select last_insert_id()")
+		@Delete()
+		@Update()
+		@Select()	
+	2.2：实现延迟加载配置
+		一对一：
+			@Results(value={
+				@Result(column="条件列",property="一方属性" ,
+					one=@One(select="关联的下一条SQL语句",fetchType=FetchType.LAZY)
+				)
+			})
+		一对多：
+			@Results(value={
+				@Result(column="条件列",property="多方属性" ,
+					many=@Many(select="关联的下一条SQL语句",fetchType=FetchType.LAZY)
+				)
+			})
+三、分页处理
+	1.导入依赖
+	2.配置插件(在mybatis-config.xml中的environments元素上面)
+	3.设置分页查询条件 在查询语句之前！！！
+		PageHelper.startPage(pageNum,pageSize);
+	注意：
+		分页时dao接口一般返回 Page<T>
+		封装分页信息 使用PageInfo

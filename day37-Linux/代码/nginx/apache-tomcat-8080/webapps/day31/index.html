@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        省: <select id="pSelect">
+                  <option>请选择</option>
+                  <option v-for="(province,index) in provinces">{{province.pname}}</option>
+           </select>
+    </div>
+
+    <script src="js/vuejs-2.5.16.js"></script>
+    <script src="js/axios-0.18.0.js"></script>
+    <script>
+    	var vm = new Vue({
+    		el:"#app",
+    		data:{
+                provinces:[]
+    		},
+    		methods:{
+
+    		},
+            created:function () {
+                axios.get("provinceServlet").then(response=>{
+                    if(response.data.flag){
+                        this.provinces = response.data.result;
+                    }else{
+                        alert(response.data.message);
+                    }
+                });
+            }
+    	});
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.itheima</groupId>
+    <artifactId>day47_maven01</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--导入相关依赖包 : 第一声明原则-->
+    <!--<dependencies>
+        &lt;!&ndash;引入spring-context，它所以来的包都会导入进来&ndash;&gt;
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>4.2.4.RELEASE</version>
+        </dependency>
+    </dependencies>
+-->
+
+
+    <!--导入相关依赖包 ： 就近原则-->
+    <!--<dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>4.2.4.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+
+        &lt;!&ndash;引入直接依赖&ndash;&gt;
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.2.8.RELEASE</version>
+        </dependency>
+    </dependencies>-->
+
+    <!--导入相关依赖包： 直接排除-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>4.2.4.RELEASE</version>
+            <!--直接排除-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+    </dependencies>
+</project>

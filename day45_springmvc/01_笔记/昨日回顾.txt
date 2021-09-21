@@ -1,0 +1,49 @@
+springmvc day01
+
+
+入门
+	1. 创建普通类，类上打注解 @Controller
+	2. 创建一个方法，返回值是String， 方法上打注解 @RequestMapping("/add")
+	3. 方法的返回值就返回 页面的名字(完整路径)
+	4. 在resource下面创建一个xml文件，名字随意，一般： springmvc.xml
+	5. 一般这个springmvc.xml里面有四句话
+
+		<context:component-scan base-package="com.itheima"/>
+		<mvc:annotation-driven/>
+		<bean class="InternalResourceViewResovler">
+			<propert name="prefix" value="/"/>
+			<propert name="suffix" value=".jsp"/>
+		</bean>
+		<mvc:default-servlet-handler/>
+	6. 在web.xml中还需要配置DispatcherServlet ：  前端控制器
+		<servlet>
+			<sevlet-name>dispatcher</servlet-name>
+			<servlet-class>DispacherServlet全路径</servlet-class>
+
+			<init-param>
+				<param-name>contextConfigLocation</param-name>
+				<param-valuel>classpath:springmvc.xml</param-value>
+
+			<load-on-startup>>1</load-on-startup>
+		</servlet>	
+
+		<servlet-mapping>
+			<sevlet-name>dispatcher</servlet-name>
+			<url-pattern>/</url-pattern>
+		</servlet-mapping>	
+
+获取请求参数
+
+	获取简单参数
+		方法参数的名字和页面的name属性的值一样
+	获取对象参数
+		类里面的属性名字和页面的name属性的值一样
+	获取对象包含对象
+		1. 类里面的属性名字和页面的name属性的值一样
+		2. 在页面上使用子对象.属性的办法来赋值到子对象身上。
+
+	获取对象包含List
+		1. 在页面上使用[下标].属性的办法来赋值到List集合
+
+	获取对象包含Map
+		1. 在页面上使用['key'].属性的办法来赋值到List集合

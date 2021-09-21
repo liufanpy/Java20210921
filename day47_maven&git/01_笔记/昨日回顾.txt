@@ -1,0 +1,67 @@
+1. 异常处理
+	
+	1. 编译时异常，一般是方法抛出来的异常，需要try-catch
+	2. 运行时异常，只有运行时才知道会抛出异常，只有规范代码 和  测试才能够发现它
+
+	3. 异常的处理
+		由下到上，一级一级的向上抛上来，在controller里面把异常交给springmvc的异常处理器处理
+
+	4. 自定义异常处理器
+		1. 定义异常处理器
+		class MyExceptionResovler implements HandlerExceptionResolver{
+
+
+		}
+
+		2. 注册|登记异常处理器，其实就是把它交给spring来管理即可
+
+
+2. 拦截器
+
+	1. 拦截器和web阶段的过滤器，差不多。都是过滤|拦截的功能
+	2. 拦截器属于springmvc自己的产品， 过滤器属于servlet规范里面的一部分。
+	3. 定义拦截器
+		class MyInterceptor implements HandlerInteceptor{
+
+			//在目标方法执行之前，执行
+			void preHandle(){}
+
+			//在目标方法执行之后，执行
+			void postHandle(){}
+
+			//在视图渲染完毕之后执行
+			void afterCompletion(){}
+
+		}
+
+	4. 注册拦截器
+	 <mvc:interceptor2
+		   <mvc:interceptor>
+            <mvc:mapping path="/show"/>
+            <bean class="com.itheima.interceptor02.MyInterceptor02"/>
+        </mvc:interceptor>
+ 	</mvc:interceptors>
+
+
+3. SSM整合
+
+	1. SqlSessionFactoryBean
+
+	2. MapperScannerConfigurer
+
+
+		<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+	        <property name="dataSource" ref="dataSource"/>
+
+	        <!--给指定的包下的所有类，起别名-->
+	        <property name="typeAliasesPackage" value="com.itheima.bean"/>
+
+	        <!--也可以把一部分mybatis里面的配置放在SqlMapConfig.xml中，然后在这里引入它即可-->
+	        <!--<property name="configLocation" value="SqlMapConfig.xml"/>-->
+	    </bean>
+
+	    <!--3. 告诉spring扫描dao的包-->
+	    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	        <property name="basePackage" value="com.itheima.dao"/>
+	    </bean>
+

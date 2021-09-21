@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Implementation-Title: Gitblit
+Build-Date: 2020-04-05
+Bundle-SymbolicName: gitblit
+Implementation-Version: 1.9.1
+Implementation-Vendor-Id: com.gitblit
+Implementation-Vendor-URL: http://gitblit.com
+Main-Class: com.gitblit.GitBlitServer
+Ant-Version: Apache Ant 1.9.2
+Bundle-Name: Gitblit
+Bundle-Version: 1.9.1
+Created-By: Moxie v0.9.4
+Build-Jdk: 1.7.0_252
+Maven-Url: http://gitblit.github.io/gitblit-maven
+

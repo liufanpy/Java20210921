@@ -1,0 +1,85 @@
+springday03
+
+AOP
+	面向切面编程，在不改动源码的前提下，能够对功能进行增强|扩展，
+	背后其实就是动态代理
+	xml方式
+
+		1. 先把被增强类 和 增强类交给spring托管
+
+			<bean id="us" class="UserServiceImpl全路径"/>
+			<bean id="myAdvice" class="MyAdvice全路径"/>
+
+		2. 配置AOP
+
+			<aop:config>
+
+				<!-- 配置切面 -->
+				<aop:aspect ref="myAdvice">
+					<aop:before method="print"  pointcut="execution(* com.itheima..*.*(..))"/>
+				</aop:aspect>
+			</aop:config>
+
+
+	注解方式
+
+		1. 先把被增强类 和 增强类交给spring托管
+
+		@Service
+		class UserServiceImpl {}
+
+		@Aspect
+		@Component
+		class MyAdvice{
+
+			@Before("execution(* com.itheima..*.*(..))")
+			public void print(){
+
+
+			}
+		}
+
+		2. 打开开关：
+			<context:component-sca base-package="com.itheima"/>
+			<aop:aspectj-autoproxy/>
+
+事务
+
+	spring管理事务的时候，它使用一个专门的管理员来操控事务，这个管理员的接口名字： PlatformTransactioManager
+	根据dao层使用的技术不同，这个官员的实现也不一样。
+
+		jdbctemplate |  mybatis  : DataSourceTransactionManager
+		hibernate :  HibernateTransactionManager
+
+	xml方式
+
+		1. 托管UserServiceImpl
+			<bean id = "us" class="UserServiceImpl的全路径"/>
+
+		2. 托管事务的管理员
+			<bean id="tm" class="DataSourceTransactionManager的全路径">
+				<property name="dataSource" ref="dataSource"/>
+			</bean>
+
+		3. 配置事务
+
+
+			1. 配置事务的规则
+			<tx:advice id="myAdvice" transactionManager="tm">
+				<tx:attributes>
+					<tx:method name="*" 是否只读、隔离级别 、 事务传播行为 />
+				</tx:attributes>
+			</tx:advice>
+
+			2. 配置表达式切面去找方法，给这些方法应用上上面的事务的规则
+			  <aop:config>
+		        <aop:advisor advice-ref="myAdvice" pointcut="表达式"/>
+		    </aop:config>
+
+	注解方式
+
+		1. 在需要用到事务的类上或者方法上打上注解  @Transactional
+
+		2. 在xml里面打开开关
+
+			<tx:annotation-driven transaction-manager="transactionManager"/>

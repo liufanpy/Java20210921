@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<!--
+		配置DispatcherServlet
+			1. DispatcherServlet 是SpringMVC的核心，让它在最早的时机，执行初始化
+			2. load-on-startup 必须要写，然后值 要写成 1.
+			3. 配置初始化参数
+				contextConfigLocation ： 这是固定的名字
+				classpath:springmvc.xml ： 这是用来指定配置文件在哪里。
+				只要项目启动了，那么DispatcherServlet就会解析 springmvc.xml文件
+	-->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+
+		<!--告诉DispatcherServlet，我们的配置文件在哪里？ 因为DispatcherServlet会解读配置文件-->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:springmvc.xml</param-value>
+		</init-param>
+
+
+		<!--让DispatcherServlet初始化提前-->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!--
+		1. 这里的DispatcherServlet映射的地址路径为什么不写成 *.do
+			其实也可以写成*.do, 只是我们用起来不方便，因为所有的请求都要带上.do 尾巴
+		2. 为什么也不写成 /* 呢？
+			2.1 在tomcat里面有一个servlet，名叫：JspServlet，它能处理jsp页面。它的映射地址是 *.jsp
+			2.2 如果DispatcherServlet 映射成了 /*  那么 我们的优先级更高。
+			2.3 /* 属于目录匹配方式 *.jsp 属于后缀名匹配， 目录匹配的优先级更高。
+			2.4 这就会出现一种情况，当我们真的来请求一个jsp页面的时候， 原来的tomcat里面的JspServlet 收
+				不到这个请求，请求被	DispatcherServlet 收到了。但是DispatcherServlet 不能处理jsp资源
+				所以会报错！
+
+		3. 为什么写成 /  ，它是什么意思？
+			3.1 / 属于缺省配置，优先级是最低的， 它比 *.do | *.jsp 扩展名匹配还低。
+			3.2 配置成 / 的用意主要还是为了确保 jsp页面能够正常的被Tomcat里面的JspServlet处理。
+	-->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>

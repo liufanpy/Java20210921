@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <!--1. 开启组件的扫描-->
+    <context:component-scan base-package="com.itheima"/>
+
+
+    <!--
+        2. 配置mvc注解驱动开关
+            不要导错了，如果导入了cache约束文件，那么就会报这个错 No bean named 'cacheManager' available
+
+            在入门代码里面不写这个配置也可以，但是后面的课程中，使用到了其他的注解，所以这个开关|标签，最好
+            都写上。
+    -->
+    <mvc:annotation-driven/>
+
+    <!--
+        3. 配置视图解析器
+            1. 需要指定前缀和和后缀。
+            2. 这个前缀和后缀会和我们的方法的返回值，组成页面的完整路径
+            3. 视图解析器配置了之后，即影响全局的所有路径设置。以前的物理视图的写法，也会主动
+                加上前缀和后缀。
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    
+    
+    <!--4. 配置静态资源-->
+    
+    <!--
+        4.1 我们自己处理，告诉springmvc，静态资源在什么文件夹里面，以后什么样的请求来了，就去对应的文件夹里面找资源响应
+            mvc:resources : 是用来配置请求地址和资源的路径映射关系的
+                mapping : 请求的地址
+                    a. 可以直接写完整的名字  /js/my.js
+                    b. 可以写匹配的任意字符 /js/*    * 只能表示一级地址
+                    c. 要想匹配任意路径， /js/**     **表示任意地址路径，可以有多级路径
+                location : 资源的位置 后面的地址的  /  不能省略掉
+
+     -->
+    <!--<mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/html/**" location="/html/"/>-->
+
+
+    <!--4.2 把静态资源的处理，交给tomcat来处理，我们不处理-->
+    <mvc:default-servlet-handler/>
+</beans>

@@ -1,0 +1,22 @@
+2021/05/24 10:04:44 [error] 10488#2232: *1 CreateFile() "D:\nginx\nginx-1.16.1/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2021/05/24 10:19:34 [notice] 11472#12664: signal process started
+2021/05/24 10:19:45 [error] 2688#11828: *1 CreateFile() "D:\nginx\nginx-1.16.1/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:82", referrer: "http://localhost:82/"
+2021/05/24 10:21:26 [notice] 760#12420: signal process started
+2021/05/24 10:31:17 [notice] 14456#10552: signal process started
+2021/05/24 10:31:35 [notice] 11472#7484: signal process started
+2021/05/24 10:33:46 [notice] 3844#12060: signal process started
+2021/05/24 10:34:11 [notice] 7368#10164: signal process started
+2021/05/24 10:55:34 [notice] 4276#13228: signal process started
+2021/05/24 10:57:40 [notice] 2696#8124: signal process started
+2021/05/24 11:07:43 [notice] 8732#16084: signal process started
+2021/05/24 11:08:01 [error] 1596#13384: *13 CreateFile() "D:/nginx/login/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:18081", referrer: "http://localhost:18081/"
+2021/05/24 11:08:11 [error] 1596#13384: *16 CreateFile() "D:/nginx/regist/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:18082", referrer: "http://localhost:18082/"
+2021/05/24 11:32:07 [notice] 8636#3700: signal process started
+2021/05/24 11:33:49 [error] 7948#13776: *19 CreateFile() "D:/nginx/regist/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: www.sz114.com, request: "GET /favicon.ico HTTP/1.1", host: "www.sz114.com", referrer: "http://www.sz114.com/"
+2021/05/24 11:34:17 [error] 7948#13776: *21 CreateFile() "D:/nginx/login/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: www.sz113.com, request: "GET /favicon.ico HTTP/1.1", host: "www.sz113.com", referrer: "http://www.sz113.com/"
+2021/05/24 12:11:40 [emerg] 4712#16132: unexpected "}" in D:\nginx\nginx-1.16.1/conf/nginx.conf:37
+2021/05/24 12:11:54 [notice] 1508#14268: signal process started
+2021/05/24 12:15:31 [notice] 14192#13352: signal process started
+2021/05/24 12:16:02 [error] 14744#7152: *48 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 192.168.37.58, server: localhost, request: "POST /linkmanSys/linkMan?method=add HTTP/1.1", upstream: "http://127.0.0.1:8080/linkmanSys/linkMan?method=add", host: "192.168.37.90", referrer: "http://192.168.37.90/linkmanSys/add.html"
+2021/05/24 14:46:55 [notice] 5756#18200: signal process started
+2021/05/24 14:52:37 [notice] 5280#17756: signal process started

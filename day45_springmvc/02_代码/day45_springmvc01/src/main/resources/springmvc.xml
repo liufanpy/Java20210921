@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--1. 扫描包-->
+    <context:component-scan base-package="com.itheima"/>
+
+    <!--2. 注解开关-->
+    <mvc:annotation-driven/>
+    <!--<mvc:annotation-driven>
+        &lt;!&ndash;
+        配置消息转换器：
+            1. 当我们的方法上打上了@ResponseBody，返回字符串的时候，里面有中文，就会出现乱码的问题
+            2. 即便我们在web.xml中配置了中文乱码的过滤器，也不能解决。
+            3. 需要配置下面的这段消息转换器 , 这段配置一旦写就，即对全局的项目产生影响。
+        &ndash;&gt;
+
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+
+                &lt;!&ndash;指定默认的编码&ndash;&gt;
+                <property name="defaultCharset" value="utf-8"/>
+
+                &lt;!&ndash;指定支持的内容类型和编码&ndash;&gt;
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;cahrset=utf-8</value>
+                        <value>application/json;cahrset=utf-8</value>
+                        <value>text/plain;cahrset=utf-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>-->
+
+    <!--3. 静态资源处理-->
+    <mvc:default-servlet-handler/>
+
+
+    <!--4. 视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!--5. 配置文件上传解析器 , id必须叫multipartResolver名字-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--配置上传文件的最大尺寸，单位：字节； -1表示不限制-->
+        <property name="maxUploadSize" value="5242880"/>
+    </bean>
+</beans>

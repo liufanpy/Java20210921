@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mm.dao.CourseDao">
+
+
+    <!--添加学科-->
+    <insert id="add" parameterType="course" >
+        insert into t_course values(null , #{name} , #{icon} , #{createDate} , #{isShow} , #{userId} , #{orderNo})
+    </insert>
+
+
+    <!--分页查询-->
+    <!--0. 提取sql片段-->
+    <sql id="wheresql">
+        <where>
+            <!-- 1. 判定查询参数name是否不为空。-->
+            <if test="queryParams.name != ''">
+                and name = #{queryParams.name}
+            </if>
+
+            <!-- 2. 判定查询参数status 是否不为空-->
+            <if test="queryParams.status != ''">
+                and is_show = #{queryParams.status}
+            </if>
+        </where>
+    </sql>
+
+    <!--1. 查询总记录数  查询参数： {currentPage: 1, pageSize: 10, queryParams: {name:'' , status:''}}   -->
+    <select id="findCount" parameterType="queryPageBean" resultType="long">
+        select count(*) from t_course
+       <!-- 因为查询参数可以有，也可以没有。比如：点击左侧的学科列表，就没有，如果是从顶部的搜索过来的，并且
+        输入框也输入内容的，那么查询参数就有值了，所以不能盲目的直接加上where, 需要对我们的参数进行判定-->
+
+        <include refid="wheresql"/>
+       <!--<where>
+           &lt;!&ndash; 1. 判定查询参数name是否不为空。&ndash;&gt;
+           <if test="queryParams.name != ''">
+                and name = #{queryParams.name}
+           </if>
+
+           &lt;!&ndash; 2. 判定查询参数status 是否不为空&ndash;&gt;
+           <if test="queryParams.status != ''">
+               and is_show = #{queryParams.status}
+           </if>
+       </where>-->
+    </select>
+
+
+    <!--分页的集合数据查询-->
+    <select id="findByPage" parameterType="queryPageBean" resultType="course">
+        select
+          id ,
+          name,
+          (select  username  from t_user where id =  user_id) creator,
+         create_date createDate,
+         is_show isShow,
+         (select count(*) from t_catalog where course_id = c.id) catalogQty,
+         (  select count(*) from t_tag where course_id = c.id ) tagQty,
+         ( select count(*) from t_question where course_id = c.id) questionQty
+        from t_course c
+        <include refid="wheresql"/>
+        limit #{offset}, #{pageSize}
+    </select>
+
+</mapper>
