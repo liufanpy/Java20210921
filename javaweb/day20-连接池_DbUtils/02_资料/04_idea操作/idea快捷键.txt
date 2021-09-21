@@ -1,0 +1,28 @@
+删除一行： CTRL + Y / CTRL + X
+复制一行： CTRL + D
+移动整个代码块： CTRL + SHIFT + 上下箭头
+自动给方法添加注释： 输入 /**，然后回车
+导入包，自动修正： ALT + ENTER
+查找类： CTRL + N
+查找文件： CTRL + SHIFT + N
+格式化代码： CTRL + ALT + L
+优化导入的类和包： CTRL + ALT + O
+快速生成代码（如get/set方法，构造方法等）： ALT + insert
+单行注释： CTRL + / （//）
+多行注释： CTRL + SHIFT + / （/* */）
+撤销到上一步： CTRL + Z
+撤销到下一步： CTRL + SHIFT + Z
+替换文本： CTRL + R
+查找当前页文本： CTRL + F
+查找全局文本： CTRL + SHIFT + F
+方法参数提示： CTRL + P
+最近打开的文本： CTRL + E
+显示注释文档： CTRL + Q
+idea最近的操作记录： ALT + SHIFT + C
+重构-重命名： SHIFT + F6
+查找代码在项目中的位置：ALT + F1
+关闭打开的类或文件：SHIFT ＋鼠标左键（需要鼠标点中）
+跳到大括号的开头/结尾： CTRL + [ 或 ]
+自动生成具有环绕性质的代码，比如：if…else,try…catch, for, synchronized 等等，使用前要先选择好需要环绕的代码块：CTRL + ALT + T
+展开或收缩代码段：Ctrl + NumPad(+/-)
+

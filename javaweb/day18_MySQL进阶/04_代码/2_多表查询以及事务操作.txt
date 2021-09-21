@@ -1,0 +1,235 @@
+-- ----------------------------------------∂‡±Ì≤È—Ø-------------------------------------------
+-- ¥¥Ω®≤ø√≈±Ì
+CREATE TABLE dept (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  NAME VARCHAR(20)
+);
+
+INSERT INTO dept (NAME) VALUES ('ø™∑¢≤ø'),(' –≥°≤ø'),('≤∆ŒÒ≤ø');
+
+-- ¥¥Ω®‘±π§±Ì
+CREATE TABLE emp (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  NAME VARCHAR(10),
+  gender CHAR(1),   -- –‘±
+  salary DOUBLE,   -- π§◊ 
+  join_date DATE,  -- »Î÷∞»’∆⁄
+  dept_id INT
+);
+
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('ÀÔŒÚø’','ƒ–',7200,'2013-02-24',1);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('÷Ì∞ÀΩ‰','ƒ–',3600,'2010-12-02',2);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('Ã∆…Æ','ƒ–',9000,'2008-08-08',2);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('∞◊π«æ´','≈Æ',5000,'2015-10-07',3);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('÷©÷Îæ´','≈Æ',4500,'2011-03-14',1);
+
+-- ---------------------------------Ωª≤Ê≤È—Ø[¡ÀΩ‚]-----------------------------------------
+-- ”Ô∑®: select ... from ±Ì1,±Ì2 ; 
+-- Ωª≤Ê≤È—Ø «“ª÷÷¥ÌŒÛµƒ≤È—Ø,≤È—ØµƒΩ·π˚ «µ—ø®∂˚ª˝
+-- µ—ø®∂˚ª˝:  2’≈±Ì æÀ˘”–º«¬ºµƒ≥Àª˝;    
+-- eg:{1,2,3},{a,b,c}---->µ—ø®∂˚ª˝: {1a,1b,1c,2a,2b,2c,3a,3b,3c}
+-- 1.  π”√Ωª≤Ê≤È—Ø≤ø√≈∫Õ‘±π§µƒ–≈œ¢
+select * from emp,dept;
+
+-- 2. ¡∑œ∞:  π”√Ωª≤Ê≤È—Ø≤ø√≈µƒ√˚≥∆∫Õ‘±π§id,√˚≥∆,salary,join_date–≈œ¢
+select emp.id,emp.name,emp.salary,emp.join_date,dept.name from emp,dept;
+select e.id,e.name,e.salary,e.join_date,d.name from emp e,dept d;-- »°±√˚
+
+-- ---------------------------------ƒ⁄¡¨Ω”≤È—Ø[÷ÿµ„]-----------------------------------------
+-- “˛ Ωƒ⁄¡¨Ω””Ô∑®1: select ... from ±Ì1,±Ì2 where πÿ¡™Ãıº˛  [and ∆‰À˚Ãıº˛];
+-- ¡∑œ∞:≤È—Ø‘±π§µƒid,–’√˚,–‘±,–Ω◊ ,º”»Î»’∆⁄,À˘ Ù≤ø√≈
+select e.id,e.name,e.gender,e.salary,e.join_date,d.name  from emp e,dept d where e.dept_id = d.id;
+
+
+-- œ‘ æƒ⁄¡¨Ω””Ô∑®1: select ... from ±Ì1 [inner] join ±Ì2 on πÿ¡™Ãıº˛;
+-- ¡∑œ∞:≤È—Ø‘±π§µƒid,–’√˚,–‘±,–Ω◊ ,º”»Î»’∆⁄,À˘ Ù≤ø√≈
+select e.id,e.name,e.gender,e.salary,e.join_date,d.name  from emp e inner join dept d on e.dept_id = d.id;
+select e.id,e.name,e.gender,e.salary,e.join_date,d.name  from emp e  join dept d on e.dept_id = d.id;
+
+
+
+-- Õ˘≤ø√≈±Ì÷–ÃÌº”“ª∏ˆ≤ø√≈–≈œ¢
+insert into dept values(null,'œ˙ €≤ø');
+-- Õ˘≤ø√≈±Ì÷–ÃÌº”“ªÃı‘±π§–≈œ¢
+insert into emp values(null,'¬ﬁπ·÷–','ƒ–',10000,'2007-01-01',null);
+
+-- ¡∑œ∞:≤È—ØÀ˘”–≤ø√≈œ¬µƒ‘±π§–≈œ¢,»Áπ˚∏√≤ø√≈œ¬√ª”–‘±π§‘Ú≤ª’π æ≤ø√≈∫Õ‘±π§–≈œ¢.
+select * from emp,dept where emp.dept_id = dept.id;
+
+
+-- ---------------------------------Õ‚¡¨Ω”≤È—Ø[÷ÿµ„]-----------------------------------------
+-- ◊ÛÕ‚¡¨Ω”:	“‘join◊Û±ﬂµƒ±ÌŒ™÷˜±Ì,’π æ÷˜±ÌµƒÀ˘”– ˝æ›,∏˘æ›Ãıº˛≤È—Ø¡¨Ω””“±ﬂ±Ìµƒ ˝æ›,»Ù¬˙◊„Ãıº˛‘Ú’π æ,»Ù≤ª¬˙◊„‘Ú“‘nullœ‘ æ.
+-- ”Ô∑®: select ... from ◊Û±Ì left [outer] join ”“±Ì on  πÿ¡™Ãıº˛; (Õ‚º¸µƒ÷µµ»”⁄÷˜±Ì÷˜º¸µƒ÷µ)
+-- ¡∑œ∞:≤È—ØÀ˘”–≤ø√≈œ¬µƒ‘±π§,√ª”–‘±π§æÕæÕœ‘ ænull
+select * from dept left outer join emp on dept.id = emp.dept_id;
+select * from dept left  join emp on dept.id = emp.dept_id;
+
+
+-- ”“Õ‚¡¨Ω”: 	“‘join”“±ﬂµƒ±ÌŒ™÷˜±Ì,’π æ”“±ﬂ±ÌµƒÀ˘”– ˝æ›,∏˘æ›Ãıº˛≤È—Øjoin◊Û±ﬂ±Ìµƒ ˝æ›,»Ù¬˙◊„‘Ú’π æ,»Ù≤ª¬˙◊„‘Ú“‘nullœ‘ æ
+-- ”Ô∑®: select ... from ◊Û±Ì right [outer] join ”“±Ì on  πÿ¡™Ãıº˛; (Õ‚º¸µƒ÷µµ»”⁄÷˜±Ì÷˜º¸µƒ÷µ)
+-- ¡∑œ∞:≤È—ØÀ˘”–≤ø√≈œ¬µƒ‘±π§,√ª”–‘±π§æÕæÕœ‘ ænull
+select * from emp right outer join dept on dept.id = emp.dept_id;
+select * from emp right  join dept on dept.id = emp.dept_id;
+
+
+
+
+-- ---------------------------------◊”≤È—Ø[÷ÿµ„]-----------------------------------------
+-- –Ë«Û: ≤È—Ø–Ω◊ ◊ÓµÕµƒ‘±π§–≈œ¢
+select min(salary) from emp;- 3600
+select * from emp where salary = (select min(salary) from emp);
+
+
+-- ◊”≤È—ØµƒΩ·π˚ «“ª∏ˆ÷µµƒ ±∫Ú
+-- ◊”≤È—ØΩ·π˚÷ª“™ «µ•∏ˆ÷µ£¨øœ∂®‘⁄WHERE∫Û√Ê◊˜Œ™Ãıº˛
+-- ”Ô∑®: SELECT ... FROM ±Ì WHERE ◊÷∂Œ [=,>,<,<>,...]£®◊”≤È—Ø£©;
+-- ¡∑œ∞: ≤È—Øπ§◊ ◊Ó∏ﬂµƒ‘±π§ «À≠£ø 
+-- 1.œ»≤È—Ø≥ˆ◊Ó∏ﬂπ§◊ 
+select max(salary) from emp;
+-- 2.∏˘æ›◊Ó∏ﬂπ§◊ ≤È—Ø≥ˆ‘±π§–≈œ¢
+select * from emp where salary = (select max(salary) from emp);
+
+-- ¡∑œ∞:≤È—Øπ§◊ –°”⁄∆Ωæ˘π§◊ µƒ‘±π§”–ƒƒ–©£ø
+-- 1.œ»≤È—Ø∆Ωæ˘π§◊ 
+select avg(salary) from emp;
+-- 2.≤È—Ø–°”⁄∆Ωæ˘π§◊ µƒ‘±π§–≈œ¢
+select * from emp where salary < (select avg(salary) from emp);
+
+
+
+
+-- ◊”≤È—ØΩ·π˚÷ª“™ «µ•¡–∂‡––£¨øœ∂®‘⁄WHERE∫Û√Ê◊˜Œ™Ãıº˛
+-- ◊”≤È—ØΩ·π˚ «µ•¡–∂‡––£¨Ω·π˚ºØ¿‡À∆”⁄“ª∏ˆ ˝◊È£¨∏∏≤È—Ø π”√IN‘ÀÀ„∑˚
+-- ”Ô∑®:SELECT ... FROM ±Ì WHERE ◊÷∂Œ IN £®◊”≤È—Ø£©;
+-- ¡∑œ∞1: ≤È—Øπ§◊ ¥Û”⁄5000µƒ‘±π§£¨¿¥◊‘”⁄ƒƒ–©≤ø√≈µƒ√˚◊÷  
+-- 1.œ»≤È—Øπ§◊ ¥Û”⁄5000µƒ‘±π§µƒdept_id
+select dept_id from emp where salary > 5000;-- (1,2,null)
+
+-- 2.∏˘æ›‘±π§µƒdept_id»•≤ø√≈±Ì÷–≤È—Ø≤ø√≈√˚◊÷
+select name from dept where id in (1,2,null);
+select name from dept where id in (select dept_id from emp where salary > 5000);
+
+
+-- ¡∑œ∞2: ≤È—Øø™∑¢≤ø”Î≤∆ŒÒ≤øÀ˘”–µƒ‘±π§–≈œ¢
+-- 1.œ»≤È—Øø™∑¢≤ø”Î≤∆ŒÒ≤øµƒid
+select id from dept where name in('ø™∑¢≤ø','≤∆ŒÒ≤ø');-- (1,3)
+
+-- 2.∏˘æ›ø™∑¢≤ø”Î≤∆ŒÒ≤øµƒid»•‘±π§±Ì÷–≤È—Ø∂‘”¶µƒ‘±π§–≈œ¢
+select * from emp where dept_id in(1,3);
+select * from emp where dept_id in(select id from dept where name in('ø™∑¢≤ø','≤∆ŒÒ≤ø'));
+
+-- ◊”≤È—ØΩ·π˚÷ª“™ «∂‡––∂‡¡–£¨øœ∂®‘⁄FROM∫Û√Ê◊˜Œ™±Ì
+-- ”Ô∑®: SELECT ... FROM £®◊”≤È—Ø£© ±Ì±√˚ WHERE Ãıº˛;
+-- ◊¢“‚:◊”≤È—Ø◊˜Œ™±Ì–Ë“™»°±√˚£¨∑Ò‘Ú’‚’≈±Ì√ª”√√˚≥∆Œﬁ∑®∑√Œ ±Ì÷–µƒ◊÷∂Œ
+
+-- ¡∑œ∞:≤È—Ø≥ˆ2011ƒÍ“‘∫Û»Î÷∞µƒ‘±π§–≈œ¢£¨∞¸¿®≤ø√≈√˚≥∆
+-- 1.œ»≤È—Ø≥ˆ2011ƒÍ“‘∫Û»Î÷∞µƒ‘±π§–≈œ¢
+select * from emp where join_date > '2011-01-01';
+-- 2.∞—2011ƒÍ“‘∫Û»Î÷∞µƒ‘±π§–≈œ¢µ±≥…“ª’≈¡Ÿ ±±Ì,”Î≤ø√≈±ÌΩ¯––ƒ⁄¡¨Ω”≤È—Ø
+select e.*,dept.name from (select * from emp where join_date > '2011-01-01') e,dept where dept.id = e.dept_id; 
+select e.*,dept.name from (select * from emp where join_date > '2011-01-01') e,dept where dept.id = e.dept_id; 
+
+
+-- -------------------------------------------------mysql ¬ŒÒπ‹¿Ì---------------------------------------
+-- ◊º±∏ ˝æ›:
+-- ’Àªß±Ì
+create table account(
+    id int primary key auto_increment,
+    name varchar(20),
+    money double
+);
+
+insert into account values (null,'zs',1000);
+insert into account values (null,'ls',1000);
+insert into account values (null,'ww',1000);
+-- ≤Ÿ◊˜: zs∏¯ls◊™’À100‘™
+-- ◊‘∂Øπ‹¿Ì ¬ŒÒ(mysqlƒ¨»œ)
+-- 	“ªÃısql”Ôæ‰æÕ «“ª∏ˆ ¬ŒÒ(mysqlƒ¨»œ◊‘∂Øø™∆Ù ¬ŒÒ,◊‘∂ØÃ·Ωª ¬ŒÒ)
+update account set money = money - 100 where name = 'zs'; -- zs«Æ-100
+update account set money = money + 100 where name = 'ls'; -- ls«Æ+100
+
+-- ”–“Ï≥£
+update account set money = money - 100 where name = 'zs'; -- zs«Æ-100
+-- “Ï≥£
+update account set money = money + 100 where name = 'ls'; -- ls«Æ+100
+
+--  ÷∂Ø ¬ŒÒπ‹¿Ì
+--  ÷∂Øø™∆Ù ¬ŒÒ: start transaction;
+--  ÷∂ØÃ·Ωª ¬ŒÒ: commit;----> ¬ŒÒΩ· ¯
+--  ÷∂ØªÿπÀ ¬ŒÒ: rollback;---> ¬ŒÒΩ· ¯
+
+-- zs◊™’À∏¯ls100‘™, √ª”–“Ï≥£
+-- ø™∆Ù ¬ŒÒ
+start transaction;
+-- ÷¥––sql”Ôæ‰
+update account set money = money - 100 where name = 'zs'; -- zs«Æ-100
+update account set money = money + 100 where name = 'ls'; -- ls«Æ+100
+-- Ã·Ωª ¬ŒÒ
+commit;
+
+
+-- zs◊™’À∏¯ls100‘™, ”–“Ï≥£
+-- ø™∆Ù ¬ŒÒ
+start transaction;
+-- ÷¥––sql”Ôæ‰
+update account set money = money - 100 where name = 'zs'; -- zs«Æ-100
+-- ∑¢…˙“Ï≥£
+update account set money = money + 100 where name = 'ls'; -- ls«Æ+100
+-- ªÿπÀ ¬ŒÒ
+rollback;
+
+-- ≤È—Ømysqlµƒ ¬ŒÒπ‹¿Ì
+show variables like '%commit%'; -- on | off 
+-- πÿ±’mysql◊‘∂Ø ¬ŒÒπ‹¿Ì
+set autocommit='off';
+set autocommit=0;
+-- …Ë÷√mysql◊‘∂Ø ¬ŒÒπ‹¿Ì
+set autocommit='on';
+set autocommit=1;
+
+
+-- ªÿπˆµ„:
+-- …Ë÷√ªÿπˆµ„: savepoint √˚◊÷;
+-- ªÿπˆµΩªÿπˆµ„: rollback to ªÿπˆµ„µƒ√˚◊÷;
+-- ◊¢“‚: ªÿπˆµΩªÿπˆµ„ «√ª”–Ω· ¯ ¬ŒÒµƒ,÷ª”–commitªÚ’ﬂrollback≤≈ª·Ω· ¯ ¬ŒÒ
+-- ø™∆Ù ¬ŒÒ
+start transaction;
+-- zs«Æ-100
+update account set money = money - 100 where name = 'zs';
+-- zs«Æ-100
+update account set money = money - 100 where name = 'zs';
+-- zs«Æ-100
+update account set money = money - 100 where name = 'zs';
+-- zs«Æ-100  
+update account set money = money - 100 where name = 'zs';
+-- “‘…œ≤Ÿ◊˜∂º «≥…π¶µƒ
+-- …Ë÷√ªÿπˆµ„
+savepoint abc;
+
+-- “‘œ¬≤Ÿ◊˜≤ªƒ‹±£÷§“ª∂®≥…π¶
+-- zs«Æ-100  
+update account set money = money - 100 where name = 'zs';
+-- zs«Æ-100  
+update account set money = money - 100 where name = 'zs';
+-- zs«Æ-100  
+update account set money = money - 100 where name = 'zs';
+-- ªÿπˆµΩªÿπˆµ„--√ª”–Ω· ¯ ¬ŒÒ
+rollback to abc;
+-- zs«Æ-100  
+update account set money = money - 100 where name = 'zs';
+-- Ã·Ωª ¬ŒÒ
+commit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

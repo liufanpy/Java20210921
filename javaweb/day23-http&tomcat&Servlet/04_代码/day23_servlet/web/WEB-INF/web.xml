@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+    <!--配置ServletDemo1的路径-->
+    <servlet>
+        <servlet-name>demo1</servlet-name>
+        <servlet-class>com.itheima.demo1_Servlet入门.ServletDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>demo1</servlet-name>
+        <url-pattern>/demo1</url-pattern>
+    </servlet-mapping>
+
+    <!--配置ServletDemo3的路径-->
+    <servlet>
+        <servlet-name>ServletDemo3</servlet-name>
+        <servlet-class>com.itheima.demo1_Servlet入门.ServletDemo3</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletDemo3</servlet-name>
+        <url-pattern>/demo3</url-pattern>
+    </servlet-mapping>
+
+    <!--配置ServletDemo8的路径-->
+    <servlet>
+        <servlet-name>ServletDemo8</servlet-name>
+        <servlet-class>com.itheima.demo3_ServletConfig.ServletDemo8</servlet-class>
+        <init-param>
+            <param-name>akey</param-name>
+            <param-value>aaa</param-value>
+        </init-param>
+        <!--启动项,值越小,级别越高-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletDemo10b</servlet-name>
+        <servlet-class>com.itheima.demo4_Servlet继承体系.ServletDemo10b</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo8</servlet-name>
+        <url-pattern>/demo8</url-pattern>
+    </servlet-mapping>
+
+
+    <!--配置全局的参数-->
+    <context-param>
+        <param-name>ckey</param-name>
+        <param-value>ccc</param-value>
+    </context-param>
+
+</web-app>

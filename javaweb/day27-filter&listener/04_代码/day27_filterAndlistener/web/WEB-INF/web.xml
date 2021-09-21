@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+
+    <filter>
+        <filter-name>FilterDemo1</filter-name>
+        <filter-class>com.itheima.demo1_filter入门.FilterDemo1</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterDemo1</filter-name>
+        <url-pattern>/ServletDemo1</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FilterDemo4</filter-name>
+        <filter-class>com.itheima.demo2_filter生命周期.FilterDemo4</filter-class>
+        <init-param>
+            <param-name>akey</param-name>
+            <param-value>aaa</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterDemo4</filter-name>
+        <url-pattern>/ServletDemo4</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FilterDemo13</filter-name>
+        <filter-class>com.itheima.demo5_过滤器链.FilterDemo13</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterDemo13</filter-name>
+        <url-pattern>/ServletDemo11</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>FilterDemo12</filter-name>
+        <filter-class>com.itheima.demo5_过滤器链.FilterDemo12</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterDemo12</filter-name>
+        <url-pattern>/ServletDemo11</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>com.itheima.demo8_监听器.MyServletContextListener</listener-class>
+    </listener>
+
+</web-app>

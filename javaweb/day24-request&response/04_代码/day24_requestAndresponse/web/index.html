@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index.html</title>
+</head>
+<body>
+<!--在index中访问ServletDemo1: 可以通过表单标签的action属性或者超链接标签的href属性-->
+<!--相对路径:相对于当前页面路径而言的,当前路径./,上一层路径../-->
+<!--相对路径的写法套路: 你把2个页面的绝对路径写出来,省略公共部分-->
+<!--绝对路径:以http开头,包含ip地址和端口号的-->
+<!--<a href="aa/a.html">相对路径进入a.html</a>-->
+<!--<a href="http://localhost:8080/day24/aa/a.html">绝对路径进入a.html</a>-->
+
+<a href="http://localhost:8080/day24/ServletDemo1">绝对路径访问ServletDemo1(操作请求行)</a><br/>
+<a href="ServletDemo1?username=itheima&password=123456">相对路径访问ServletDemo1(操作请求行)</a><br/>
+<a href="ServletDemo2">访问ServletDemo2(操作请求头)</a><br/>
+<hr/>
+
+<form action="ServletDemo3a" method="post">
+    用户名:<input type="text" name="username"><br/>
+    密码:<input type="password" name="password"><br/>
+    爱好:
+        <input type="checkbox" name="hobby" value="basketball">篮球
+        <input type="checkbox" name="hobby" value="football">足球
+        <input type="checkbox" name="hobby" value="code">敲代码<br/>
+    <input type="submit">
+</form>
+
+<hr/>
+<a href="ServletDemo4">访问ServletDemo4(转发到ServletDemo5)</a>
+<hr/>
+
+<h1>超链接方式下载文件</h1>
+<a href="download/b.jpg">b.jpg</a><br/>
+<a href="download/itheima.txt">itheima.txt</a><br/>
+<a href="download/itcast.zip">itcast.zip</a><br/>
+
+<h1>手动编码方式下载文件</h1>
+<a href="ServletDemo12?fileName=b.jpg">b.jpg</a><br/>
+<a href="ServletDemo12?fileName=itheima.txt">itheima.txt</a><br/>
+<a href="ServletDemo12?fileName=itcast.zip">itcast.zip</a><br/>
+<a href="ServletDemo12?fileName=美女.jpg">美女.jpg</a><br/>
+
+</body>
+</html>
