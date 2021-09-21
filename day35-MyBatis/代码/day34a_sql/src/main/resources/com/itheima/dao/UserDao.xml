@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:设置当前映射文件和哪一个dao接口对应   namespace的值就是对应接口的全限定名称 -->
+<mapper namespace="com.itheima.dao.UserDao">
+
+    <!--sql标签：提取公共的sql片段  方便重用-->
+    <sql id="selectUser">
+        SELECT uid ,username ,birthday , address FROM t_user
+    </sql>
+
+    <!-- 查询所有用户
+        select：查询
+            id：接口的方法名称
+            resultType：返回值类型  对应方法的返回值类型 如果是普通类型比如int、String就直接写，如果是泛型集合就写集合的泛型类型就好
+            parameterType：设置参数类型
+    -->
+    <select id="findAll" resultType="User">
+        select * from t_user
+    </select>
+
+    <!--使用pojo包装类型  根据用户名和id进行查询用户列表-->
+    <select id="getUserListByQueryVo1" parameterType="QueryVo" resultType="User">
+        select * from t_user where 1=1
+        <if test="user.uid!=null and user.uid>0">
+            and uid=#{user.uid}
+        </if>
+        <if test="user.username!=null and user.username.length>0">
+            and username=#{user.username}
+        </if>
+    </select>
+
+    <!--使用pojo包装类型  根据用户名和id进行查询用户列表-->
+    <select id="getUserListByQueryVo2" parameterType="QueryVo" resultType="User">
+        select * from t_user
+        <!--  使用where标签  会自动去除多余的关键字and|or  但是不会自动添加 -->
+        <where>
+            <if test="user.uid!=null and user.uid>0">
+                and uid=#{user.uid}
+            </if>
+            <if test="user.username!=null and user.username.length>0">
+                and username=#{user.username}
+            </if>
+        </where>
+    </select>
+
+    <!--使用 pojo包装类  QueryVo 根据用户名和用户id进行模糊查询-->
+    <select id="getUserListByQueryVo3" parameterType="QueryVo" resultType="User">
+        <include refid="selectUser"></include>
+	        WHERE username LIKE concat(#{user.username},'%')
+	        AND  uid IN
+	        <!--
+	            foreach：遍历标签 用来遍历集合数组数据
+	                collection：要遍历的集合
+	                item：遍历得到的元素
+	                open：遍历的内容以什么开头
+	                separator：遍历的元素之间以什么分割
+	                close：遍历的内容以什么结尾
+	        -->
+	        <foreach collection="ids" item="uid" open="(" separator="," close=")">
+                #{uid}
+            </foreach>
+    </select>
+
+    <!--choose(when+otherwise) 表示的就是if-else 实现动态SQL-->
+    <select id="getUserList01" parameterType="User" resultType="User">
+        select * from t_user  where 1=1
+        <choose>
+            <when test="uid!=null and uid>0">
+                and uid=#{uid}
+            </when>
+            <otherwise>
+                and username like concat('%',#{username},'%')
+            </otherwise>
+        </choose>
+    </select>
+
+    <!--where + choose(when+otherwise) 表示的就是if-else 实现动态SQL-->
+    <select id="getUserList02" parameterType="User" resultType="User">
+        select * from t_user
+        <where>
+            <choose>
+                <when test="uid!=null and uid>0">
+                    and uid=#{uid}
+                </when>
+                <otherwise>
+                    and username like concat('%',#{username},'%')
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <!--trim + choose(when+otherwise) 表示的就是if-else 实现动态SQL
+        trim标签：
+            prefix：设置拼接sql语句的前缀
+            prefixOverrides：去除SQL片段前面多余的关键字and|or
+            suffix：设置拼接sql语句的后缀
+            suffixOverrides：去除SQL片段后面多余的内容
+    -->
+    <select id="getUserList03" parameterType="User" resultType="User">
+        select * from t_user
+        <trim prefix="where" prefixOverrides="and|or" suffix="">
+            <choose>
+                <when test="uid!=null and uid>0">
+                    and uid=#{uid}
+                </when>
+                <otherwise>
+                    and username like concat('%',#{username},'%')
+                </otherwise>
+            </choose>
+        </trim>
+    </select>
+
+    <!--if实现动态修改-->
+    <update id="updateUser01" parameterType="User">
+        update t_user set
+        <if test="username!=null and username.length>0">
+            username=#{username},
+        </if>
+        <if test="sex!=null and sex.length>0">
+            sex=#{sex},
+        </if>
+        <if test="birthday!=null">
+            birthday=#{birthday},
+        </if>
+        <if test="address!=null and address.length>0">
+            address=#{address}
+        </if>
+        where uid=#{uid}
+    </update>
+
+    <!--set+if实现动态修改
+        set：可以去除多余sql片段后面多余的,
+    -->
+    <update id="updateUser02" parameterType="User">
+        update t_user
+        <set>
+            <if test="username!=null and username.length>0">
+                username=#{username},
+            </if>
+            <if test="sex!=null and sex.length>0">
+                sex=#{sex},
+            </if>
+            <if test="birthday!=null">
+                birthday=#{birthday},
+            </if>
+            <if test="address!=null and address.length>0">
+                address=#{address}
+            </if>
+        </set>
+        where uid=#{uid}
+    </update>
+
+
+    <!--trim+if实现动态修改
+        set：可以去除多余sql片段后面多余的,
+    -->
+    <update id="updateUser03" parameterType="User">
+        update t_user
+        <trim prefix="set" suffix="where uid=#{uid}" suffixOverrides=",">
+            <if test="username!=null and username.length>0">
+                username=#{username},
+            </if>
+            <if test="sex!=null and sex.length>0">
+                sex=#{sex},
+            </if>
+            <if test="birthday!=null">
+                birthday=#{birthday},
+            </if>
+            <if test="address!=null and address.length>0">
+                address=#{address}
+            </if>
+        </trim>
+
+    </update>
+
+</mapper>

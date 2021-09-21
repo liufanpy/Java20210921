@@ -1,0 +1,36 @@
+1.MyBatis的连接池和事务【了解】
+	datasource：POOLED|UNPOOLED
+	transactionManager：JDBC  表示MyBatis使用JDBC事务
+	实际开发中：连接池和事务都会交由Spring管理。
+2.动态SQL【重点】
+	实际开发中，SQL语句并不是一成不变的，经常需要根据条件改变SQL语句
+	if标签：选择 <if test=""></if>
+	where：替换where关键字，可以自动省略多余的关键字  and|or
+	foreach：遍历集合数据  完成SQL拼接组装  eg(1,2,6)
+		<foreach collection="要遍历的集合" open="(" close=")" item="遍历的元素" separator=",">
+		</foreach>
+	sql标签：用于抽取公共SQL片段 实现重用， <include refId=""></include>
+3.MyBatis缓存【了解】
+	3.1:一级缓存
+		默认开启，与SqlSession相关，缓存的是对象的内存地址
+		缓存清空：
+			1.关闭SqlSession
+			2.增删改操作，提交事务commit
+	3.2：二级缓存
+		手动开启，与SqlSessionFactory相关，缓存的是对象序列化之后的数据
+		配置：①mybatis-config.xml(开启全局缓存)
+			  ②配置哪个映射文件的查询使用二级缓存(<cache />)
+			  ③具体哪个查询使用二级缓存(<select useCache="true"></select>)
+		缓存清空：	
+			1.销毁SqlSessionFactory
+			2.增删改操作，提交事务commit
+4.MyBatis 多表关联查询【重点】
+	1.一对一
+		a.改造javabean，在一方添加另外一个一方的对象属性
+		b.映射文件配置：将数据库表中查询出来的字段映射到对象属性上
+			<association property="一方对象属性" javaType="对象属性类型"></association>
+	2.一对多
+		a.改造javabean，在一方添加多方的对象集合属性  		List<Account>  accounts;
+		b.映射文件配置：将数据库表中查询出来的字段映射到对象集合属性上
+			<collection property="多方对象集合属性" ofType="多方对象集合属性类型"></collection>
+	3.多对多：看出两个一对多进行配置即可。

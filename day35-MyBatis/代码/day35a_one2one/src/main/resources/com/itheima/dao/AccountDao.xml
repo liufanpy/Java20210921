@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:设置当前映射文件和哪一个dao接口对应   namespace的值就是对应接口的全限定名称 -->
+<mapper namespace="com.itheima.dao.AccountDao">
+
+    <resultMap id="findAccountListId" type="Account">
+        <id column="aid" property="aid" />
+        <result column="money" property="money" />
+        <result column="uid" property="uid" />
+        <!--一对一关联映射配置
+            association：用来进行一对一的关联映射配置
+                property：指向一方属性
+                javaType：一方属性类型
+                column：关联查询的下一条SQL语句需要使用到的条件列
+                select：配置关联查询的下一条SQL
+                fetchType：加载类型 是否使用懒加载   lazy：使用懒加载  eager：立即加载
+
+        -->
+        <association property="user" javaType="User" column="uid" select="com.itheima.dao.UserDao.getUserByUid" fetchType="lazy"></association>
+
+    </resultMap>
+
+    <!--查询所有的账户信息 并关联用户名和地址-->
+    <select id="findAll" resultType="AccountCustom">
+        SELECT a.*,u.username,u.address FROM t_account AS a,t_user AS u WHERE a.uid=u.uid
+    </select>
+
+
+    <!--查询所有的账户信息 并关联用户名和地址 一对一关联映射配置   延迟加载-->
+    <select id="findAccountList" resultMap="findAccountListId">
+        select * from t_account
+    </select>
+
+</mapper>

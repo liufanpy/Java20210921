@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:设置当前映射文件和哪一个dao接口对应   namespace的值就是对应接口的全限定名称 -->
+<mapper namespace="com.itheima.dao.UserDao">
+
+    <!--表示为User的查询开启二级缓存-->
+    <cache />
+
+    <!--useCache="true"  表示当前这个查询的语句开启了二级缓存  可以正常使用-->
+    <!--根据Uid 查询指定用户-->
+    <select id="getUserById" parameterType="int" resultType="User" useCache="true">
+        select * from t_user where uid=#{uid}
+    </select>
+
+    <!-- 查询所有用户
+        select：查询
+            id：接口的方法名称
+            resultType：返回值类型  对应方法的返回值类型 如果是普通类型比如int、String就直接写，如果是泛型集合就写集合的泛型类型就好
+            parameterType：设置参数类型
+    -->
+    <select id="findAll" resultType="User">
+        select * from t_user
+    </select>
+
+
+
+    <!--修改用户信息-->
+    <update id="updateUser" parameterType="User">
+        update t_user set username=#{username} , address=#{address} where uid=#{uid}
+    </update>
+
+
+</mapper>

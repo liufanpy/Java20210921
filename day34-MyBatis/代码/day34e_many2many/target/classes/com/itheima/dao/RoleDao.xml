@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:设置当前映射文件和哪一个dao接口对应   namespace的值就是对应接口的全限定名称 -->
+<mapper namespace="com.itheima.dao.RoleDao">
+
+    <resultMap id="findAllId" type="Role">
+        <id column="rid" property="rid"/>
+        <result column="rName" property="rName" />
+        <result column="rDesc" property="rDesc" />
+        <!--配置多对多 实际上就是配置双向的一对多 使用collection  角色：用户 = 1：N -->
+        <collection property="users" ofType="User">
+            <result column="uid" property="uid"/>
+            <result column="username" property="username"/>
+            <result column="sex" property="sex"/>
+            <result column="birthday" property="birthday"/>
+            <result column="address" property="address"/>
+        </collection>
+    </resultMap>
+    
+    <!--实现查询所有角色对象并且加载它所分配的用户信息。角色：用户 = 1：N -->
+    <select id="findAll" resultMap="findAllId">
+        SELECT * FROM t_role AS r
+             LEFT JOIN user_role AS ur
+             ON r.`rid` = ur.`rid`
+             LEFT JOIN t_user AS u
+             ON u.`uid` = ur.`uid`
+    </select>
+
+
+</mapper>

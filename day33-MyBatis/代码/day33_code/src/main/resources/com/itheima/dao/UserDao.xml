@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:设置当前映射文件和哪一个dao接口对应   namespace的值就是对应接口的全限定名称 -->
+<mapper namespace="com.itheima.dao.UserDao">
+
+
+    <resultMap id="userMap" type="User">
+        <!-- id标签用于配置表中的主键列 -->
+        <id column="u_id" property="uid"></id>
+        <result column="username" property="username"></result>
+        <result column="sex" property="sex"></result>
+        <result column="birthday" property="birthday"></result>
+        <result column="address" property="address"></result>
+    </resultMap>
+
+    <!-- 查询所有用户
+        select：查询
+            id：接口的方法名称
+            resultType：返回值类型  对应方法的返回值类型 如果是普通类型比如int、String就直接写，如果是泛型集合就写集合的泛型类型就好
+            parameterType：设置参数类型
+    -->
+    <select id="findAll" resultMap="userMap">
+        select * from t_user
+    </select>
+
+    <!--
+        insert：插入
+            id：接口方法名
+            parameterType：接口方法参数类型
+            resultType：返回值类型 抱歉 ，在增删改时不需要设置resultType，因为增删改默认返回受影响的行数 就是int类型
+            使用#{}获取传递的参数，如果传递的参数时对象  则直接使用#{对象的属性}直接获取
+    -->
+    <insert id="addUser" parameterType="User">
+            INSERT INTO `t_user` VALUES (NULL, #{username}, #{sex}, #{birthday}, #{address});
+    </insert>
+
+    <!--
+        方式一：新增用户  并获取新增用户的id  【企业常用】
+    -->
+    <insert id="addUser2" parameterType="User">
+            <!--
+                keyProperty：数据库表中主键对应的java类中属性
+                resultType：数据类型
+                order：主键的生成 是在执行sql语句之前还是之后   由于这里使用的数据库自增 所以主键生成是在添加sql语句之后 应该写AFTER
+            -->
+            <selectKey keyProperty="uid" resultType="int" order="AFTER">
+                SELECT LAST_INSERT_ID();
+            </selectKey>
+            INSERT INTO `t_user` VALUES (NULL, #{username}, #{sex}, #{birthday}, #{address});
+    </insert>
+
+    <!--
+        方式二：新增用户  并获取新增用户的id  【比较简单，但企业中用的少】
+        keyProperty：数据库表中主键列对应的java类中属性
+        useGeneratedKeys：表示主键是使用自增的
+    -->
+    <insert id="addUser3" parameterType="User" keyProperty="uid" useGeneratedKeys="true">
+        INSERT INTO `t_user` VALUES (NULL, #{username}, #{sex}, #{birthday}, #{address});
+    </insert>
+
+    <!--修改用户
+        update：修改
+            id：接口的方法名
+            parameterType：接口方法参数类型
+    -->
+    <update id="updateUser" parameterType="User">
+            UPDATE t_user SET username=#{username},sex=#{sex},birthday=#{birthday},address=#{address} where uid=#{uid}
+    </update>
+
+    <!--删除用户
+        delete：删除
+            id：接口的方法名
+            parameterType：接口方法参数类型
+            情况一： 当参数时pojo对象时  使用#{对象的属性}直接获取
+            情况二：当参数时基本数据类型时(int、String)  使用#{名称随便写}直接获取  当然一般为了规范，还是习惯写#{参数名称}获取
+    -->
+    <delete id="deleteUserById" parameterType="int">
+        delete from t_user where uid=#{uid}
+    </delete>
+
+    <select id="getUserListByName" parameterType="string" resultType="User">
+        select * from t_user where username like CONCAT(#{username},'%')
+    </select>
+
+    <!--
+        使用${}获取简单类型数据时：只能使用${value}
+    -->
+    <select id="getUserListByName2" parameterType="string" resultType="User">
+        select * from t_user where username like '${value}%'
+    </select>
+
+    <!--根据用户id查询用户信息，查询条件放到 QueryVo 的 user 属性中。 -->
+    <select id="getUserByQueryVo" parameterType="queryVo" resultType="User">
+        select * from t_user where uid=#{user.uid}
+    </select>
+
+    <!--使用包装类型  根据用户名 支持模糊查询和角色id进行查询-->
+    <select id="getUserListByQueryVo" parameterType="queryVo" resultType="User">
+        select * from t_user where username like concat('%',#{user.username},'%') and roleId=#{role.rid}
+    </select>
+
+    <!--传递多个参数  不使用包装类型 根据用户名和角色id进行查询
+        parameterType：可以省略 MyBatis会根据参数类型自动识别
+    -->
+    <select id="getListByNameAndRoleId" resultType="User">
+        select * from t_user where username like concat('%',#{username},'%') and roleId=#{roleId}
+    </select>
+
+    <!--需求1：查询用户表的用户记录数-->
+    <select id="count" resultType="int">
+        select count(*) from t_user
+    </select>
+    <!--需求2：根据uid查询指定用户-->
+    <select id="getUserByUid" resultType="User">
+        select * from t_user where uid=#{uid}
+    </select>
+
+</mapper>

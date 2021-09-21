@@ -1,0 +1,74 @@
+Maven
+1.Maven概念
+	Maven：是一个由Apache提供的项目构建工具，主要用来进行项目的jar包管理。
+	作用：①依赖管理 ②项目构建 ③多模块开发
+	Maven仓库：存放jar包的地方(本地仓库 远程仓库 中央仓库)
+	Maven坐标：jar包的唯一标识(groupId、artifactedId、version  简称：GAV)
+2.Maven安装
+	本地安装：配置环境变量、settings.xml配置本地仓库
+	idea集成Maven：①当前项目配置Maven  ②新项目配置Maven环境
+3.使用idea创建Maven工程
+	3.1：使用模板创建javase、javaweb项目
+	3.2：不使用模板创建
+	注意：Maven工程创建出来  可能目录结构不完整 需要手动补全
+4.Maven命令(项目构建)
+	mvn clean:清理编译后的内容 清理target目录下内容
+	mvn compile：编译Maven项目
+	mvn test：执行Maven项目的所有单元测试  src/test/java
+	mvn package：打包  javase打包成jar包，方便其他项目引用 javaweb打war包，方便直接在tomcat中部署
+	mvn install：将项目安装到本地仓库  方便其他项目以坐标的方式引入使用
+	mvn deploy：将项目发布到私服(远程仓库) 方便进行资源共享
+5.Maven依赖管理和插件
+	jar包依赖范围：
+		compile：默认 表示该jar包在编译、测试、运行时都需要
+		test：表示该jar包在测试时需要
+		provided：表示该jar包在编译、测试时需要
+		runtime：表示该jar包在测试、运行时需要
+6.私服【了解】
+	在公司内部搭建一个Maven仓库，相对于我们的本地仓库，那么私服也就是一个远程仓库。
+7.Lombok
+	提高开发效率，避免频繁的修改实体类属性，进行setter/getter方法的维护
+	@Data
+	@Getter/Setter
+	@ToString
+	@NoArgsConstructor @AllArgsconstructor
+8.使用Maven时的问题
+	1.Maven的安装配置没有搞好！！！
+	2.使用Maven下载jar包时需要联网！！！  当网络环境差的时候，可能导致jar包下载不完整或失败，导致无法使用！
+	3.jar包下载不完整或失败，去到仓库中进行删除，重新再项目中添加依赖，重新下载！
+	
+	
+	
+	
+	
+ORM：对象关系映射(Object relational  Mapping)	
+Object:对象 		java中的javabean
+relational：关系  	关系型数据库
+
+数据库  --  实体类  的映射关系
+
+表 		-- 		实体类
+记录	-- 		对象
+字段	--		属性
+字段类型--		属性类型
+使用MyBatis执行sql语句操作数据库 会自动的将数据库中查询出来的结果封装为java对象！
+MyBatis是一个半自动的ORM框架。     半自动就是你还要写sql
+Hibernate是一个全自动的ORM框架。   全自动无需编写sql
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

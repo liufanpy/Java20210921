@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:设置当前映射文件和哪一个dao接口对应   namespace的值就是对应接口的全限定名称 -->
+<mapper namespace="com.itheima.dao.UserDao">
+
+    <resultMap id="findAllId" type="User">
+        <id column="uid" property="uid" />
+        <result column="username" property="username" />
+        <result column="sex" property="sex" />
+        <result column="birthday" property="birthday" />
+        <result column="address" property="address" />
+        <!--
+            collection：用来进行一对多的关联映射配置
+                property：多方属性名称
+                ofType：多方属性类型
+        -->
+        <collection property="accounts" ofType="Account">
+            <result column="aid" property="aid" />
+            <result column="money" property="money" />
+            <result column="uid" property="uid" />
+        </collection>
+    </resultMap>
+
+    <!--查询所有用户信息及用户关联的账户信息。-->
+    <select id="findAll" resultMap="findAllId">
+        SELECT * FROM t_user AS u LEFT JOIN t_account AS a ON u.uid=a.uid
+    </select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性: 必须写接口类的全限定名-->
+<mapper namespace="com.itheima.dao.UserDao">
+    <!--select标签: 查询
+        id属性: 方法名
+        resultType属性: 写方法返回值类型(如果是list,直接写实体类的全限定名)
+        标签体: sql语句
+    -->
+    <select id="findAll" resultType="com.itheima.bean.User">
+        select * from t_user;
+    </select>
+</mapper>
