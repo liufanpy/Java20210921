@@ -1,0 +1,6 @@
+#服务器端口
+server:
+  port: 9092
+#配置nameserver
+rocketmq:
+  name-server: 10.10.20.160:9876

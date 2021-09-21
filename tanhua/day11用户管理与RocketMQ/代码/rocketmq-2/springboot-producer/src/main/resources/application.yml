@@ -1,0 +1,7 @@
+server:
+  port: 6666
+#配置生产者
+rocketmq:
+  name-server: 10.10.20.160:9876
+  producer:
+    group: produerDemo

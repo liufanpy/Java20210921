@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.tanhua.server.test.OssTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.329 s <<< FAILURE! - in com.tanhua.server.test.OssTest
+testOss(com.tanhua.server.test.OssTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webConfig': Unsatisfied dependency expressed through field 'tokenInterceptor'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'tokenInterceptor': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService': Injection of @Reference dependencies is failed; nested exception is java.lang.IllegalStateException: zookeeper not connected
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'tokenInterceptor': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService': Injection of @Reference dependencies is failed; nested exception is java.lang.IllegalStateException: zookeeper not connected
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService': Injection of @Reference dependencies is failed; nested exception is java.lang.IllegalStateException: zookeeper not connected
+Caused by: java.lang.IllegalStateException: zookeeper not connected
+Caused by: java.lang.IllegalStateException: zookeeper not connected
+

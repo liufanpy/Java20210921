@@ -1,0 +1,15 @@
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/mapper/BlackListMapper.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/handler/MyMetaObjectHandler.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/api/db/BlackListApiImpl.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/api/db/UserInfoApiImpl.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/mapper/UserInfoMapper.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/api/db/SettingsApiImpl.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/api/db/QuestionApiImpl.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/api/mongo/PublishApiImpl.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/mapper/QuestionMapper.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/mapper/SettingsMapper.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/config/MybatisPlusConfig.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/mapper/UserMapper.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/DubboServiceApplication.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/api/mongo/RecommendUserApiImpl.java
+/Users/liufan/Desktop/study/tanhua/day05/代码/tanhua/tanhua-dubbo/tanhua-dubbo-service/src/main/java/com/tanhua/dubbo/api/db/UserApiImpl.java
