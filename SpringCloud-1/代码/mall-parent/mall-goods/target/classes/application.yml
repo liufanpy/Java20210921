@@ -1,0 +1,9 @@
+server:
+  port: 18081
+spring:
+  application:
+    name: mall-goods
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置了注册中心（nacos-server）的地址

@@ -1,0 +1,45 @@
+﻿一,SpringBoot概念
+	Java框架, 简化了Spring开发工程.
+二,SpringBoot入门
+	*导入坐标(SpringBoot作为父工程, xx起步依赖)
+	*创建配置文件 application.yml
+	*创建启动类
+三,配置文件
+	1.application.properties
+	2.application.yml
+		简单类型 key: value
+		对象类型 person:
+					name: zs 
+					age: 18
+		map类型  key: {filed1:value1...}
+		集合(数组) key:
+					 - value1	
+					 - value2	
+					 
+		集合(数组) key:
+					 - filed1: value1 
+					   filed2: value2 				
+					 - filed1: value1 
+	3. 获得值
+		@Value("${}")
+		@ConfigurationProperties(prefix = "person") 
+	4. profile
+四,集成第三方框架
+	1. 单元测试
+		*导入起步依赖
+		*在测试类上面添加
+			@SpringBootTest(classes={启动类.class})
+			@RunWith(SpringRunner.class)
+	2. MyBatis
+		*导入起步依赖, 驱动
+		*在启动类上面添加Mapper扫描
+		*在配置文件里面配置连接数据库的信息
+	3. Redis
+		*导入起步依赖
+		*在配置文件里面配置连接Redis的信息
+		*注入RedisTemplate
+	
+	
+
+		
+	

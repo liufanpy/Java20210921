@@ -1,0 +1,25 @@
+# 该配置文件 只有功能 启用哪一个配置文件生效
+spring:
+  profiles:
+    active: dev
+--- # 隔离不同的环境
+server:
+  port: 18089
+spring:
+  application:
+    name: front
+  profiles: dev # 标记该配置为开发环境
+---
+server:
+  port: 18090
+spring:
+  application:
+    name: front
+  profiles: pro # 标记该配置为生产环境
+---
+server:
+  port: 18091
+spring:
+  application:
+    name: front
+  profiles: test # 标记该配置为测试环境

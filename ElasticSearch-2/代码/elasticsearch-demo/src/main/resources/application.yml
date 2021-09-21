@@ -1,0 +1,18 @@
+server:
+  port: 8081
+elasticsearch:
+  host: localhost
+  port: 9200
+  #host1: 127.0.0.1
+  #port1: 9201
+  #host2: 127.0.0.1
+  #port2: 9202
+  #host3: 127.0.0.1
+  #port3: 9203
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///mydb?serverTimezone=UTC
+    username: root
+    password: 123456

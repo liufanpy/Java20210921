@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.CheckGroupDao">
+
+
+    <!--更新检查组-->
+<!--    1. 更新基本信息-->
+    <update id="update" parameterType="checkGroup">
+        update t_checkgroup set code = #{code} , name = #{name} , helpCode=#{helpCode}
+            ,sex = #{sex} , remark=#{remark} , attention = #{attention} where id = #{id}
+    </update>
+<!--    2. 删除检查项-->
+    <delete id="deleteItemsById" parameterType="int">
+        delete from t_checkgroup_checkitem where checkgroup_id = #{id}
+    </delete>
+<!--    3. 添加检查项-->
+    <insert id="addItems" parameterType="int">
+        insert into t_checkgroup_checkitem values (#{groupId} , #{itemId})
+    </insert>
+
+    <select id="findAll" resultType="checkGroup">
+        select * from t_checkgroup
+    </select>
+
+    <!--分页查询-->
+    <select id="findPage" parameterType="com.itheima.entity.QueryPageBean" resultType="checkGroup">
+        select * from t_checkgroup
+      <!--  要考虑到右可能来进行分页查询的时候，是通过点击顶部的查询进来的，有可能携带了查询的参数，
+        所以要对查询的参数进行判定，如果有值，就追加where条件-->
+      <where>
+          <if test="queryString != null and queryString.length > 0">
+                code like '%${queryString}%' or name  like '%${queryString}%' or helpCode  like '%${queryString}%'
+          </if>
+      </where>
+    </select>
+
+    <select id="findItemsById" parameterType="int" resultType="integer">
+        select checkitem_id from t_checkgroup_checkitem where checkgroup_id = #{id}
+    </select>
+
+
+    <!--
+        往t_checkgroup 添加检查组的基本信息
+            id: 与方法名一样
+            parameterType: 参数类型
+            keyProperty:  返回的主键数据，使用CheckGroup这个类里面的什么属性来装
+            useGeneratedKeys ：  是否使用数据库自己创建出来的id主键。 是否由数据库生成主键，还是由mybatis自己搞出来主键
+
+     -->
+    <insert id="add" parameterType="checkGroup" keyProperty="id" useGeneratedKeys="true">
+        insert into t_checkgroup values (null , #{code} , #{name} , #{helpCode} , #{sex} , #{remark} , #{attention})
+    </insert>
+
+
+    <!--
+        往中间表里面添加记录
+            在mybatis里面，方法的参数存在多个情况。
+    -->
+    <insert id="addItem" parameterType="int">
+        insert  into t_checkgroup_checkitem values ( #{checkGroupId},  #{checkItemId} );
+    </insert>
+
+ </mapper>

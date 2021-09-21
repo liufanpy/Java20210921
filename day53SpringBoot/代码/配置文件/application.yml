@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+# 基本格式 key: value
+name: zhangsan
+# 数组   - 用于区分
+city:
+  - beijing
+  - tianjin
+  - shanghai
+  - chongqing
+#集合中的元素是对象形式
+students:
+  - name: zhangsan
+    age: 18
+    score: 100
+  - name: lisi
+    age: 28
+    score: 88
+  - name: wangwu
+    age: 38
+    score: 90
+#map集合形式
+maps: {"name":"zhangsan", "age": "15"}
+#参数引用
+person:
+  name: ${name} # 该值可以获取到上边的name定义的值
+  age: 18

@@ -1,0 +1,18 @@
+#数据库的连接信息
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+#dubbo相关配置(配置ZK的地址)
+dubbo:
+  application:
+    name: dubbo-provider-02  #给应用取名字, 不要重复就好了 一般写项目名
+  protocol:
+    name: dubbo
+    port: 20881
+  registry:
+    address: zookeeper://127.0.0.1:2181 #ZK的地址
+  scan:
+    base-packages: com.itheima.a #包扫描 业务层的实现类要写在com.itheima.service

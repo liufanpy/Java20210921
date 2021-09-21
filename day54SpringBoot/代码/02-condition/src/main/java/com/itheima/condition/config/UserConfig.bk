@@ -1,0 +1,22 @@
+package com.itheima.condition.config;
+
+import com.itheima.condition.bean.User;
+import com.itheima.condition.condition.MyCondition;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * @Description:
+ * @author: yp
+ */
+@Configuration
+public class UserConfig {
+
+    @Bean
+    @Conditional(value = {MyCondition.class}) //Conditiond的子类: MyCondition里面的matches方法返回true, @Conditional控制加载当前的bean;返回false, @Conditional控制不加载当前的bean
+    public User user(){
+        return new User();
+    }
+
+}

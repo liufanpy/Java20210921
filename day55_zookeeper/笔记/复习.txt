@@ -1,0 +1,11 @@
+﻿一,Condition 
+	*Condition   接口
+	*@Conditionl 注解
+	目的:围绕看源码	
+二,自动装配原理
+	@SpringBootApplication
+三,加载第三方的Bean
+	*包扫描
+	*@Import()
+四,自定义启动器
+	

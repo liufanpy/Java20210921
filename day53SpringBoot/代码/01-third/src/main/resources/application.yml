@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+  redis:
+    host: localhost
+    port: 6379
+mybatis:
+  mapper-locations: classpath:mappers/*Mapper.xml #指定mapper映射文件的路径
+  type-aliases-package: com.itheima.third.pojo #别名

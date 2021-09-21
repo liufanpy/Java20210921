@@ -1,0 +1,36 @@
+server:
+  port: 18084
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # 指定该微服务 注册到的服务端的IP和端口
+    gateway:
+      # 配置全局默认过滤器 所有的路由规则都生效
+      default-filters:
+        # 使用过滤器：响应头过滤器 往响应过滤器中加入信息
+        - AddResponseHeader=y,itheima
+      routes:  # 配置多个路由规则 （指定如何转发请求）
+        - id: item_route # 规则的唯一标识
+         # uri: http://localhost:18081  # 转发到的 服务的ip和端口
+          uri: lb://item  # lb:// 标识负载均衡 item -->指定负载均衡的服务名
+          predicates:  # 配置断言 要转发的触发条件
+             # /item/** 表示：当请求来：http://localhost:18084/item/1234 --转发到-> http://localhost:18081/item/1234
+            - Path=/** # 指定触发条件 为路径的匹配条件：
+          filters:
+           # - PrefixPath=/item  #前缀过滤器 当请求来的时候：http://localhost:18084/123 -转发到-->http://localhost:18081/item/123
+            - StripPrefix=1 # 去除前缀的过滤器 数字 表示去除从左开始路径个数 当请求来的时候：http://localhost:18084/api/item/123 -转发到-->http://localhost:18081/item/123
+            # MyParam 为自定义的局部过滤器的名称   name ,itheima : 头的名称  头的值
+            - MyParam=name, itheimax
+      globalcors:
+        cors-configurations:
+          '[/**]': # 匹配所有的请求
+            allowedOrigins: "*" # 允许所有的域来访问
+            allowedHeaders: "*" # 允许所有的头携带过来
+            allowedMethods:  # 允许以下的方法的请求来访问
+              - GET
+              - DELETE
+              - POST
+              - PUT

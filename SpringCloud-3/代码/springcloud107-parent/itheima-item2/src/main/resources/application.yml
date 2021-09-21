@@ -1,0 +1,22 @@
+server:
+  port: 18083
+spring:
+  application:
+    name: item
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # 指定该微服务 注册到的服务端的IP和端口
+    sentinel:
+      transport:
+        port: 8719 # http服务的端口 用于规则设置生效时使用
+        dashboard: localhost:8080 # 链接到的控制台服务端的地址链接ip
+  zipkin:
+    sender:
+      type: web
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1 # 100% 收集数据 异步
+logging:
+  level.com.itheima: debug

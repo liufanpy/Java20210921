@@ -1,0 +1,9 @@
+server:
+  port: 7777
+dubbo:
+  application:
+    name: dubbo-consumer  #dubbo应用的名字, 随便取, 不要重复就好了
+  consumer:
+    check: false #启动不检查提供者
+  registry:
+    address: zookeeper://127.0.0.1:2181 #zk的地址

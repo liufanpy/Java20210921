@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dubbo_provider" />
+        <module name="dubbo_provider_03" />
+        <module name="dubbo_provider_02" />
+        <module name="dubbo_domain" />
+        <module name="dubbo_consumer" />
+        <module name="dubbo_interface" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dubbo_consumer" target="1.8" />
+      <module name="dubbo_domain" target="1.8" />
+      <module name="dubbo_interface" target="1.8" />
+      <module name="dubbo_parent" target="1.8" />
+      <module name="dubbo_provider" target="1.8" />
+      <module name="dubbo_provider_02" target="1.8" />
+      <module name="dubbo_provider_03" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dubbo_consumer" options="-parameters" />
+      <module name="dubbo_domain" options="-parameters" />
+      <module name="dubbo_interface" options="-parameters" />
+      <module name="dubbo_provider" options="-parameters" />
+      <module name="dubbo_provider_02" options="-parameters" />
+      <module name="dubbo_provider_03" options="-parameters" />
+    </option>
+  </component>
+</project>

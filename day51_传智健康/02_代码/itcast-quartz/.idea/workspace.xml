@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="214280ec-5dc0-41a3-b49d-e8ae2de00db5" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../heima111/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="C:\heima111\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1tpIyeZTsik4q8qen28GHXjKVIJ" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\xiaomi\Desktop\a\itcast-quartz\src\main\java" />
+      <recent name="C:\Users\xiaomi\Desktop\a\itcast-quartz\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.itheima.job.Demo" />
+      <module name="itcast-quartz" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itheima.job.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Demo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration useDefault="false">C:\Users\xiaomi\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="214280ec-5dc0-41a3-b49d-e8ae2de00db5" name="Default Changelist" comment="" />
+      <created>1623459859751</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623459859751</updated>
+      <workItem from="1623459861902" duration="3470000" />
+      <workItem from="1623485693179" duration="302000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="0" key="#Project_Structure" timestamp="1623485772315">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1623485772315" />
+    <state width="1493" height="280" key="GridCell.Tab.0.bottom" timestamp="1623485997311">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623485997311" />
+    <state width="1493" height="280" key="GridCell.Tab.0.center" timestamp="1623485997311">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623485997311" />
+    <state width="1493" height="280" key="GridCell.Tab.0.left" timestamp="1623485997311">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623485997311" />
+    <state width="1493" height="280" key="GridCell.Tab.0.right" timestamp="1623485997311">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623485997311" />
+    <state x="449" y="95" key="spring file set editor" timestamp="1623459901796">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="95" key="spring file set editor/0.0.1536.824@0.0.1536.824" timestamp="1623459901796" />
+  </component>
+</project>

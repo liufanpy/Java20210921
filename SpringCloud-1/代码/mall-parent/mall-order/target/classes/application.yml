@@ -1,0 +1,8 @@
+server:
+  port: 18082
+spring:
+  application:
+    name: mall-order  #服务名称, 随便取,不要重复(一般用项目名称)
+  cloud:
+    nacos:
+      server-addr: localhost:8848

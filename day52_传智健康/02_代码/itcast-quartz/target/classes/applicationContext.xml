@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--1. 把任务类交给spring托管-->
+    <bean id="myJob" class="com.itheima.job.MyJob"/>
+
+    <!--2. 定义出来任务策略： 其实就是告诉spring哪个类的哪个方法是任务 MethodInvokingJobDetailFactoryBean-->
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="myJob"/>
+        <property name="targetMethod" value="print"/>
+    </bean>
+
+    <!--3. 定义触发器： 什么时候执行方法。 CronTriggerFactoryBean-->
+    <bean id="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="cronExpression" value="0/1 * * * * ?"/>
+    </bean>
+
+    <!--4. 把触发器交给 任务调度容器：SchedulerFactoryBean-->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <!--可以把很多的触发器交给任务调度容器-->
+        <property name="triggers">
+            <array>
+                <ref bean="trigger"/>
+            </array>
+        </property>
+    </bean>
+</beans>

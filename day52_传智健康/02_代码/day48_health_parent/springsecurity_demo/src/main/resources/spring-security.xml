@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--
+        指定匿名即可访问的资源，也就是不需要认证授权，就可以访问
+            1. 访问css或者js文件夹里面的资源都可以直接访问
+            2. login.html也不要拦截，否则我们就没法去登录了。
+     -->
+    <security:http security="none" pattern="/css/**"/>
+    <security:http security="none" pattern="/js/**"/>
+    <security:http security="none" pattern="/login.html"/>
+
+    <!--
+        1. 权限的规则：配置哪些地址|连接|请求，需要什么权限才可以访问！
+            security:http :用于配置权限规则
+                auto-config ： 是否自动配置，帮我们提供登录的页面
+                                true : 默认会提供一个登录的页面给我们
+                                false : 一定要自己写一个登录的页面，并且要做配置。
+                use-expressions : 是否使用表达式 用于控制下面的标签intercept-url 里面的
+                                access属性是否必须写成表达式的写法 hasRole('Role_xxxx')
+                                use-expressions = "true" , 那么 access :必须写成有表达式的写法hasRole('Role_xxxx')
+                                use-expressions="false", 那么 access :只需要写角色的权限关键字即可，但是一定要以Role_打头
+    -->
+    <security:http auto-config="true" use-expressions="false">
+
+
+
+        <!--
+            intercept-url: 用来设置什么样的地址，要有什么样的角色（身份）才能访问
+                pattern ： 用来定义访问的地址的匹配表达式 ，如果希望所有的请求都需要权限
+                access : 指定角色（权限）
+                     access="ROLE_ADMIN" 表示只有管理员的权限，才能访问所有的请求|地址。
+         -->
+
+        <security:intercept-url pattern="/**" access="ROLE_ADMIN"/>
+
+        <!--
+          security:form-login : 用于配置登录的表单页面信息
+               login-page ： 登录页面是哪个
+               username-parameter ：用户名的那个name属性的值是什么
+               password-parameter ： 密码的那个name属性的值是什么
+               login-processing-url : 登录的表单提交的地址是哪个
+               default-target-url ： 登录成功之后，去到哪里
+               authentication-failure-url : 登录失败之后，去到哪里
+               always-use-default-target : 表示登录之后之后是否打开index首页。 true :表示一定会打开首页，false：不一定打开index.html
+        -->
+        <security:form-login
+                login-page="/login.html"
+                username-parameter="username"
+                password-parameter="password"
+                login-processing-url="/login.do"
+                always-use-default-target="true"
+                default-target-url="/index.html"
+                authentication-failure-url="/login.html"/>
+
+        <!--加入csrf的忽略-->
+        <security:csrf disabled="true"/>
+    </security:http>
+
+    <!--
+        2. 认证管理：配置哪些用户拥有什么样的角色（权限）
+            authentication-manager : 认证管理员
+                 authentication-provider ： 由它提供认证的规则
+                    user-service : 具体的认证的用户服务
+                        security:user ： 提供具体的扫描样的用户对应什么样的权限
+                            name : 用户名
+                            password: 密码 ，如果是明文的密码，需要在前面加上 {noop}
+                            authorities : 代表什么样的权限（角色）
+
+    -->
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="admin" password="{noop}123" authorities="ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <mvc:default-servlet-handler/>
+</beans>

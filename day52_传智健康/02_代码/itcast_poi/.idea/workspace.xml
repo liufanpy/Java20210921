@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc744686-7d92-4418-ab9f-6d9e4407ac89" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../heima111/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="C:\heima111\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1tpUSBioMkHesJvmMNVlkwJNcOS" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/itheima/utils" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\xiaomi\Desktop\a\itcast_poi\src\main\java\com\itheima\utils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.TestPOI.testWrite">
+    <configuration name="TestPOI.testRead01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="itcast_poi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itheima.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.itheima.test" />
+      <option name="MAIN_CLASS_NAME" value="com.itheima.test.TestPOI" />
+      <option name="METHOD_NAME" value="testRead01" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPOI.testRead02" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="itcast_poi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itheima.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.itheima.test" />
+      <option name="MAIN_CLASS_NAME" value="com.itheima.test.TestPOI" />
+      <option name="METHOD_NAME" value="testRead02" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPOI.testWrite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="itcast_poi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itheima.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.itheima.test" />
+      <option name="MAIN_CLASS_NAME" value="com.itheima.test.TestPOI" />
+      <option name="METHOD_NAME" value="testWrite" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestPOI.testWrite" />
+        <item itemvalue="JUnit.TestPOI.testRead02" />
+        <item itemvalue="JUnit.TestPOI.testRead01" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration useDefault="false">C:\Users\xiaomi\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc744686-7d92-4418-ab9f-6d9e4407ac89" name="Default Changelist" comment="" />
+      <created>1623465521764</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623465521764</updated>
+      <workItem from="1623465524048" duration="2074000" />
+      <workItem from="1623485696786" duration="301000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="0" key="#Project_Structure" timestamp="1623466952101">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1623466952101" />
+    <state width="1493" height="41" key="GridCell.Tab.0.bottom" timestamp="1623469128291">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="41" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623469128291" />
+    <state width="1493" height="41" key="GridCell.Tab.0.center" timestamp="1623469128291">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="41" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623469128291" />
+    <state width="1493" height="41" key="GridCell.Tab.0.left" timestamp="1623469128291">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="41" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623469128291" />
+    <state width="1493" height="41" key="GridCell.Tab.0.right" timestamp="1623469128291">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="41" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623469128291" />
+  </component>
+</project>

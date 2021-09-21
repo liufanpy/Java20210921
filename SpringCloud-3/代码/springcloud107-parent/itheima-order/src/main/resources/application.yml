@@ -1,0 +1,40 @@
+server:
+  port: 18082
+spring:
+  application:
+    name: order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # 指定该微服务 注册到的服务端的IP和端口
+    sentinel:
+      transport:
+        port: 8719 # http服务的端口 用于规则设置生效时使用
+        dashboard: localhost:8080 # 链接到的控制台服务端的地址链接
+item: # 该值 对应被调用方的服务名 针对的是该调用方的负载均衡的策略
+  ribbon:
+    #轮询
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    #随机算法
+#    NFLoadBalancerRuleClassName: com.itheima.rule.MyRule
+    #重试算法,该算法先按照轮询的策略获取服务,如果获取服务失败则在指定的时间内会进行重试，获取可用的服务
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule
+    #加权法,会根据平均响应时间计算所有服务的权重，响应时间越快服务权重越大被选中的概率越大。刚启动时如果同统计信息不足，则使用轮询的策略，等统计信息足够会切换到自身规则。
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.ZoneAvoidanceRule
+feign:
+  client:
+    config:
+      default: # default指定的是所有的 被调用方  都设置为该配置超时时间，可以设置为某一个微服务对应的服务名
+        connectTimeout: 5000 # 链接超时时间
+        readTimeout: 5000 # 读取的超时时间
+  sentinel:
+    enabled: true # 集成了sentinel
+  zipkin:
+    sender:
+      type: web
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1 # 100% 收集数据 异步
+logging:
+  level.com.itheima: debug
