@@ -1,0 +1,74 @@
+spring day01
+
+IOC +  DI
+
+IOC:
+	是什么？ 是控制反转 ，把对象的创建工作交给spring来完成。
+			也就是我们不要自己创建对象，而是问spring要对象
+
+	入门：
+		1. 写接口和实现类
+		2. 定义配置文件 applicationContext.xml
+			<bean id="us" class="com.itheima.service.impl.UserServiceImpl"/>
+		3. 单元测试问工厂要对象
+
+			ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+			UserService us = context.getBean("us");
+
+			us.add();
+
+	细节：
+		1. 默认情况下spring创建的对象是单例的，并且默认会执行类的无参构造方法。
+		2. 如果期望创建多例对象，那么需要使用属性scope="prototype"
+		3. 实例何时创建？何时销毁？
+			单例：
+				当初始化工厂的时候，创建对象
+				当工厂销毁的时候，，销毁对象
+			多例：
+				当来问工厂要对象的时候，创建对象
+				长时间不用，GC收走了。
+
+DI :
+	是什么？
+		1. 依赖注入 ，让spring创建某一个类的对象的时候，顺便把这个类里面的某些属性给赋值了。
+		2. 要想完成依赖注入，必须有IOC的前提，也就是这个类必须要交给spring管理。
+	注入方式：
+		1. set方式
+		2. 有参构造
+		3. p名称空间(背后是set方法)
+
+	注入数据类型：
+		1. 普通的数据（基本数据类型和String)
+		2. 对象类型 【最常用】
+		3. 集合类型
+	入门：
+		public class UserServiceImpl implements UserService{
+
+			private UserDao userDao;
+			public void setUserDao(UserDao userDao){
+				this.userDao = userDao;
+			}
+
+
+			private String address;
+			public void setUserDao(String address){
+				this.address = address;
+			}
+
+
+			public void add(){
+					syso:"add...";
+			}
+		}
+
+		applicationContext.xml:
+			<bean id="us" class="UserServiceImpl的全路径">
+				<property name="userDao" ref="ud"/>
+				<property name="address" value="北京"/>
+			</bean>
+
+spring 整合Junit
+
+		@RunWith(SpringJunit4ClassRunner.class)
+		@ContextConfiguration("classpath:applicationContext.xml")

@@ -1,0 +1,9 @@
+jdbc:
+  driver: com.mysql.jdbc.Driver # 注意：英文冒号后边必须有一个空格
+  url: jdbc:mysql:///spring
+  username: root
+  password: root
+
+jedis:
+  host: localhost
+  port: 6379

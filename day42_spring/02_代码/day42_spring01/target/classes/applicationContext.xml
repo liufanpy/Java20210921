@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        1. 打开注解的扫描开关
+            1.1 因为我们创建spring工厂的时候，解读的是applicationContext.xml 这个文件。
+            1.2 但是这个文件里面已经不再写 <bean>标签，那么此时spring就不知道要创建哪个类的对象
+            1.3 虽然在具体的类身上打上了注解 @Component ，但是spring的工厂不知道这些类
+            1.4 所以需要指定让spring去扫描具体的包，以便它识别这些包里面类身上的注解，然后托管这些类。
+            1.5 如果想指定具体的包，可以写多个，然后使用空格来间隔， 也可以只写到父亲的包。
+    -->
+
+    <context:component-scan base-package="com.itheima"/>
+
+</beans>
