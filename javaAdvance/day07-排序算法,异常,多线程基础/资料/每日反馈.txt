@@ -1,0 +1,117 @@
+1.不会用泛型去改进 教学系统案例（javase2-day04）,举一个例子，从主界面-->学生管理系统-->添加人员 ，求具体代码
+
+    public static void showAllPerson(ArrayList<? extends Person> array) {
+        System.out.println("**********************************************************************");
+        System.out.println("编号\t姓名\t性别\t生日\t\t\t年龄\t\t描述");
+        for (int i = 0; i < array.size(); i++) {
+            Person p = array.get(i);
+            System.out.println(p.getId() + "\t" + p.getName() + "\t" + p.getSex() + "\t" + p.getBirthday() + "\t" + p.getAge() + "\t" +
+                    "我是一名" + p.getType() + ",我的工作是:" + p.getWork());
+        }
+        System.out.println("**********************************************************************");
+    }
+
+        public static void addStudent(ArrayList<T extends Person> array) {
+        	Scanner sc = new Scanner(System.in);
+        	System.out.println("请输入姓名");
+        	String name = sc.nextLine();
+        	System.out.println("请输入性别");
+        	String sex = sc.nextLine();
+        	System.out.println("请输入生日(格式:2020-12-12)");
+        	String birthday = sc.nextLine();
+       	 int age = Utils.birthdayToAge(birthday);
+        	//问题:如何判定传进来的集合的数据类型是学生还是老师，从而创建时机的学生对象
+        		Person  p = new Student(Utils.sId, name, sex, birthday, age);
+       		 Utils.sId++;
+        	array.add(s);
+    }
+
+
+2.感觉现在集合学多了容易搞混，比如它们特有的方法，等等，希望老师总结下，他们的区别
+	单列集合
+		Collection
+			通用方法
+        			public boolean add(E e)：  把给定的对象添加到当前集合中
+        			public boolean remove(E e): 把给定的对象在当前集合中删除
+        			public boolean contains(Object obj): 判断当前集合是否包含给定的对象
+        			public boolean isEmpty(): 判断当前集合是否为空
+        			public int size(): 返回集合中元素的个数
+        			public Object[] toArray(): 把集合中的元素，存储到数组中
+        			public void clear():清空集合中所有的元素	
+			迭代器遍历
+				获取迭代器对象  Iterator<XXX>   it   =     集合对象.iterator()
+				迭代器遍历
+					while(it.hasNext()){
+						XXX  xxx =it.next();
+						//其他操作
+					}
+			增强for遍历
+				for(数据类型  变量名: 数组或集合对象){
+					//其他操作
+				}
+
+		List  特点:存取有序，有索引，元素可重复
+			通用方法:
+        				public void add(int index, E element): 将指定的元素，添加到该集合中的指定位置上
+        				public E get(int index):返回集合中指定位置的元素
+        				public E remove(int index): 移除列表中指定位置的元素, 返回的是被移除的元素
+        				public E set(int index, E element):用指定元素替换集合中指定位置的元素,返回修改前的元素
+			常用子类:
+				ArrayList：数组结构，查找快，增删慢
+				LinkedList：链表结构，查找慢，增删快
+					    public void addFirst(E e):将指定元素插入此列表的开头
+					    public void addLast(E e):将指定元素添加到此列表的结尾
+					    public E getFirst():返回此列表的第一个元素
+					    public E getLast():返回此列表的最后一个元素
+					    public E removeFirst():移除并返回此列表的第一个元素
+					    public E removeLast():移除并返回此列表的最后一个元素
+					    public E pop():从此列表所表示的堆栈处弹出一个元素
+					    public void push(E e):将元素推入此列表所表示的堆栈
+					    public boolean isEmpty()：如果列表不包含元素，则返回true
+		Set  特点:存取无序，无索引，元素不可重复
+			常用子类
+				HashSet：添加自定义类对象，重写HashCode和equals方法
+    					LinkedHashSet(存取有序)   添加自定义类对象，重写HashCode和equals方法
+    				TreeSet：树结构集合   自定义类必须重写比较规则
+					实现比较规则两种方式1.自然排序，存储的类实现Comparable接口 2.比较器排序 创建Comparator接口实现类对象，重写比较规则
+
+	双列集合
+		Map
+			理解:
+        				键(Key)不能包含重复的键，
+        				值(Value)可以重复；
+        				每个键只能对应一个值。
+			常用方法
+				    public V put(K key, V value):  把指定的键与值添加到Map集合中
+				            若键(key)在集合中不存在，添加指定的键和值到集合中，返回null
+				            若键(key)在集合中存在，对应键的原值被新值替代，返回该键对应的原值。
+				    public V remove(Object key): 把指定的键对应的键值对元素在Map集合删除，返回被删除元素的值
+				    public V get(Object key) 根据指定的键，在Map集合中获取对应的值。
+				    public Set<K> keySet(): 获取Map集合中所有的键，存储到Set集合中。
+				    public Set<Map.Entry<K,V>> entrySet(): 获取到Map集合中所有的键值对对象的集合(Set集合)。
+				    public boolean containKey(Object key):判断该集合中是否有此键。
+			常用子类
+				    HashMap<K,V>  键列添加添加自定义类对象，重写HashCode和equals方法
+    				    	LinkedHashMap<K,V>(存取有序)键列添加自定义类对象，重写HashCode和equals方法
+				    TreeMap<K,V>键列添加添加自定义类对象，自定义类重写比较规则
+					实现比较规则两种方式1.自然排序，存储的类实现Comparable接口 2.比较器排序 创建Comparator接口实现类对象，重写比较规则
+					
+
+3.comparaort比较器有点晕
+	记结论:
+		自然排序  类实现 Comparable接口，重写compareTo方法                                     
+			this在前，参数在后表示升序，this在后，参数在前表示降序
+				this.age-参数.age就是按照年龄升序，反之是降序
+			多个成员变量的时候，优先按照那个变量排序，就先用哪个变量作比较
+				int num =this.age-参数.age
+				num=(num==0)？this.name.compareTo(参数.name:num)。
+				解析:优先按照年龄的升序排列，如果年龄相同，再按照姓名的升序排列。
+		比较器排序
+			参数1相当于上面的this，参数2相当于上面的参数。
+4.老师多注意龙体
+5.建议反馈时间提前到七点半，八点半才能反馈有点晚，容易忘记
+6.开始能懂，后面越来越糊涂了
+7.感觉越来越难理解了 
+8.set集合听的有点懵懵的
+9.上课时 ，听的很清楚，下课后就记不清具体的用法了，感觉很快就忘记了，记忆很模糊
+		

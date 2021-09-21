@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    复制内容如下到XML文件中:
+        <!DOCTYPE 书架 SYSTEM "bookdtd.dtd">
+
+-->
+<!ELEMENT 书架 (书+)>
+<!ELEMENT 书 (书名,作者,售价)>
+<!ELEMENT 书名 (#PCDATA)>
+<!ELEMENT 作者 (#PCDATA)>
+<!ELEMENT 售价 (#PCDATA)>
+<!ATTLIST 书
+        id ID #REQUIRED
+        编号 CDATA #IMPLIED
+        出版社 (清华|北大|传智播客) "传智播客"
+        type CDATA #FIXED "IT"
+        >

@@ -1,0 +1,23 @@
+数组优势/劣势
+链表优势/劣势
+优势结合:散列表
+散列表特点
+什么是哈希？
+HashMap集合继承体系
+Node数据结构
+底层存储结构介绍
+put原理介绍
+	hash值--扰动函数--路由寻址(table.length-1&node.hash)
+什么是Hash碰撞
+	造成链化
+什么是链化
+	桶状结构，查询数据低效
+jfk8为什么引入红黑树
+	避免过长的桶状结构
+HashMap扩容原理
+	数据过多，链化严重，以两倍的长度扩容。
+
+黑马程序员:https://www.bilibili.com/video/BV18D4y197eL?p=2
+其他连接:
+	https://www.bilibili.com/video/BV1LJ411W7dP
+	https://www.bilibili.com/video/BV1Qk4y1672n?from=search&seid=7241547692788194325

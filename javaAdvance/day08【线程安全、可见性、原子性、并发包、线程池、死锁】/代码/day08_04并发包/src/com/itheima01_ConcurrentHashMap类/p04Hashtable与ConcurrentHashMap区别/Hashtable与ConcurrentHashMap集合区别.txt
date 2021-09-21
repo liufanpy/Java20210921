@@ -1,0 +1,2 @@
+HashTable效率低下原因：全局synchronized锁定
+ConcurrentHashMap高效的原因：CAS + 局部synchronized锁定
