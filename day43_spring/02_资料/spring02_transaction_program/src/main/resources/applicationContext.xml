@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.itheima"/>
+
+    <!--事务的定义-->
+    <bean id="txDefinition" class="org.springframework.transaction.support.DefaultTransactionDefinition">
+        <!--事务传播特性-->
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
+        <!--事务隔离级别-->
+        <property name="isolationLevelName" value="ISOLATION_DEFAULT"/>
+        <!--事务超时时间-->
+        <property name="timeout" value="-1"/>
+        <!--事务是否只读-->
+        <property name="readOnly" value="false"/>
+    </bean>
+    <!--定义事务管理器-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--定义连接池-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql:///spring"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+    <!--定义JdbcTemplate-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+    </bean>
+</beans>
