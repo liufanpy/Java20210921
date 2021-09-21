@@ -1,0 +1,1 @@
+update ap_article set publish_time= STR_TO_DATE('19,5,2021','%d,%m,%Y')

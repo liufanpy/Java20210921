@@ -1,0 +1,22 @@
+{
+
+    "title": "黑马头条项目背景222",
+    "type": "1",
+    "labels": "黑马头条",
+    "publishTime": "2021-03-14T11:35:49.000Z",
+    "channelId": 1,    
+    "images": [
+        "http://192.168.211.136/group1/M00/00/00/wKjTiGBD7ziADWIUAADzJTJibuA37.jpeg"
+    ],
+    "status": 1,
+    "content": [
+        {
+            "type": "text",
+            "value": "随着智能手机的普及，人们更加习惯于通过手机来看新闻。由于生活节奏的加快，很多人只能利用碎片时间来获取信息，因此，对于移动资讯客户端的需求也越来越高。黑马头条项目正是在这样背景下开发出来。黑马头条项目采用当下火热的微服务+大数据技术架构实现。本项目主要着手于获取最新最热新闻资讯，通过大数据分析用户喜好精确推送咨询新闻"
+        },
+        {
+            "type": "image",
+            "value": "http://192.168.211.136/group1/M00/00/00/wKjTiGBD7ziADWIUAADzJTJibuA37.jpeg"
+        }
+    ]
+}

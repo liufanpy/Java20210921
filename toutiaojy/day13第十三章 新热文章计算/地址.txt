@@ -1,0 +1,12 @@
+--官方stream流的网址
+https://kafka.apache.org/documentation/streams/
+
+--stream流的案例
+https://www.jdon.com/50417
+
+--详细解答
+https://blog.csdn.net/u012364631/article/details/94019707
+
+-- 整合springboot 
+https://www.jdon.com/50417
+

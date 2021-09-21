@@ -1,0 +1,23 @@
+https://blog.csdn.net/yanxilou/article/details/106364200
+
+
+PUT /_cluster/settings
+{
+  "transient": {
+    "cluster": {
+      "max_shards_per_node":10000
+    }
+  }
+}
+--快速入门
+https://skywalking.apache.org/zh/2020-04-19-skywalking-quick-start/
+
+
+--UI界面参考手册介绍
+https://skywalking.apache.org/docs/main/v8.4.0/en/ui/readme/
+
+---官方翻译
+https://github.com/SkyAPM/document-cn-translation-of-skywalking
+
+---邮件告警的参数介绍
+https://blog.51cto.com/zero01/2463976

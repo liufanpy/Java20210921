@@ -1,0 +1,9 @@
+https://www.jianshu.com/p/769814211a81
+
+Ktable 和KStream对比
+
+https://www.jianshu.com/p/45ba430e59f6
+
+流式处理框架对比
+https://clinat.github.io/2019/06/23/KafkaStreams/
+
