@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itheima.dao.UserMapper">
+    <cache/>
+
+
+    <parameterMap id="userMap" type="java.util.Map">
+        <parameter property="id" javaType="int"/>
+        <parameter property="username" javaType="string"/>
+    </parameterMap>
+
+    <resultMap id="userResultMap" type="com.itheima.pojo.User" >
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="address" column="address"></result>
+        <result property="name" column="name"></result>
+    </resultMap>
+
+    <!--配置查询所有-->
+    <select id="findAll" resultType="com.itheima.pojo.User">
+        select * from user
+    </select>
+    
+    <!--插入user信息-->
+    <insert id="saveUser" parameterType="com.itheima.pojo.User">
+        INSERT INTO user(username,address,name) VALUES(#{username},#{address},#{name})
+    </insert>
+    
+
+    <!-- 根据id查询-->
+    <select id="findUserById" resultType="com.itheima.pojo.User" parameterType="int" >
+        select * from user where id =  #{id}
+    </select>
+
+
+</mapper>
