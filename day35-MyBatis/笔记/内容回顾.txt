@@ -34,3 +34,153 @@
 		b.映射文件配置：将数据库表中查询出来的字段映射到对象集合属性上
 			<collection property="多方对象集合属性" ofType="多方对象集合属性类型"></collection>
 	3.多对多：看出两个一对多进行配置即可。
+
+	package com.xkcoding.demo.model.query;
+
+import lombok.Data;
+
+import java.util.List;
+
+/**
+ * <p>
+ * 高级搜索条件
+ * </p>
+ *
+ * @package: com.xkcoding.demo.model.query
+ * @description: 高级搜索条件
+ * @author: yangkai.shen
+ * @date: Created in 2019-02-14 15:33
+ * @copyright: Copyright (c) 2019
+ * @version: V1.0
+ * @modified: yangkai.shen
+ */
+@Data
+public class AdvanceQuery {
+    /**
+     * 查询条件
+     */
+    private String key;
+    /**
+     * 查询操作符
+     */
+    private String op;
+    /**
+     * 查询内容
+     */
+    private List<Object> value;
+}
+
+
+package com.xkcoding.demo.mapper;
+
+import java.util.List;
+
+import com.xkcoding.demo.common.MyMapper;
+import com.xkcoding.demo.model.User;
+import com.xkcoding.demo.model.query.AdvanceQuery;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+
+/**
+ * <p>
+ * UserMapper
+ * </p>
+ *
+ * @package: com.xkcoding.demo.mapper
+ * @description: UserMapper
+ * @author: yangkai.shen
+ * @date: Created in 2019-02-14 15:33
+ * @copyright: Copyright (c) 2019
+ * @version: V1.0
+ * @modified: yangkai.shen
+ */
+@Component
+public interface UserMapper extends MyMapper<User> {
+    /**
+     * 查询用户列表
+     *
+     * @param advanceQueryList 高级搜索条件
+     * @return 用户列表
+     */
+    List<User> selectList(@Param("advanceQuery") List<AdvanceQuery> advanceQueryList);
+}
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkcoding.demo.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.xkcoding.demo.model.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="dept_id" jdbcType="INTEGER" property="deptId"/>
+        <result column="gender" jdbcType="INTEGER" property="gender"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="birthday" jdbcType="Date" property="birthday"/>
+        <result column="last_login_time" jdbcType="Date" property="lastLoginTime"/>
+        <result column="last_ip" jdbcType="VARCHAR" property="lastIp"/>
+        <result column="lock" jdbcType="INTEGER" property="lock"/>
+    </resultMap>
+
+    <select id="selectList" resultType="com.xkcoding.demo.model.User">
+        SELECT temp.* FROM (
+            SELECT
+            t.*
+            FROM t_user t
+        )temp
+        <where>
+            <include refid="advance_query_sql"/>
+        </where>
+    </select>
+
+    <sql id="advance_query_sql">
+        <foreach item="item" collection="advanceQuery" open=" AND " separator=" AND " close=" ">
+            <choose>
+                <when test="item.op != null and item.op == 'eq'">
+                    temp.${item.key} = #{item.value[0]}
+                </when>
+                <when test="item.op != null and item.op == 'gte'">
+                    temp.${item.key} &gt;= #{item.value[0]}
+                </when>
+                <when test="item.op != null and item.op == 'lte'">
+                    temp.${item.key} &lt;= #{item.value[0]}
+                </when>
+                <when test="item.op != null and item.op == 'between'">
+                    temp.${item.key} BETWEEN #{item.value[0]} AND #{item.value[1]}
+                </when>
+                <when test="item.op != null and item.op == 'in'">
+                    temp.${item.key} IN
+                    <foreach item="value" collection="item.value" open="(" separator="," close=")">
+                        #{value}
+                    </foreach>
+                </when>
+                <when test="item.op != null and item.op == 'no'">
+                    (temp.${item.key} IS NULL OR trim(temp.${item.key}) = '')
+                </when>
+                <when test="item.op != null and item.op == 'yes'">
+                    (temp.${item.key} IS NOT NULL AND trim(temp.${item.key}) != '')
+                </when>
+                <when test="item.op != null and item.op == 'notin'">
+                    temp.${item.key} NOT IN
+                    <foreach item="value" collection="item.value" open="(" separator="," close=")">
+                        #{value}
+                    </foreach>
+                </when>
+                <when test="item.op != null and item.op == 'like'">
+                    <if test="item.value.size == 1">
+                        temp.${item.key} LIKE CONCAT("%", #{item.value[0]}, "%")
+                    </if>
+                    <if test="item.value.size > 1">
+                        <foreach item="value" collection="item.value" open="(" separator=" OR " close=")">
+                            temp.${item.key} LIKE CONCAT("%", #{value}, "%")
+                        </foreach>
+                    </if>
+                </when>
+                <otherwise>
+                    1 = 1
+                </otherwise>
+            </choose>
+        </foreach>
+    </sql>
+</mapper>
