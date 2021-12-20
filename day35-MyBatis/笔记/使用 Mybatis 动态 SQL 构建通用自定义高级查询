@@ -147,3 +147,32 @@ public interface UserMapper extends MyMapper<User> {
         </foreach>
     </sql>
 </mapper>
+
+
+[
+    {
+        "key":"username",
+        "op":"like",
+        "value":["xk","coding"]
+    },
+    {
+        "key":"gender",
+        "op":"eq",
+        "value":[1]
+    },
+    {
+        "key":"birthday",
+        "op":"between",
+        "value":["1994-11-01 00:00:00","1994-12-01 00:00:00"]
+    }
+]
+
+eq  等于  有且只有 1 个
+gte 大于等于    有且只有 1 个
+lte 小于等于    有且只有 1 个
+between 介于  有且只有 2 个
+in  包含  大于等于 1 个
+notin   不包含 大于等于 1 个
+no  不存在 空数组
+yes 存在  空数组
+like    模糊  大于等于 1 个，多个 value 时，会使用 OR 构建查询条件
